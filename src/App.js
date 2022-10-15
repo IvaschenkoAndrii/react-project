@@ -6,7 +6,7 @@ function App() {
 
     return (
         <div>
-            <Movie/>
+            <Movies/>
         </div>
     );
 }

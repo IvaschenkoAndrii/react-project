@@ -1,4 +1,4 @@
 export * from './Header';
-export * from './MovieDetailed';
+export * from './MovieDetailedPage';
 export * from './MoviesPage';
 export * from './SearchResults';

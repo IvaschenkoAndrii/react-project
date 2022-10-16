@@ -36,11 +36,14 @@ function Movies() {
 
     return (
         <div>
-            {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
-            <button disabled={page === 1} onClick={prevPage}><FontAwesomeIcon icon={faLeftLong}/></button>
-            <button onClick={backToFirst}>back to page 1</button>
-            <button onClick={nextPage}><FontAwesomeIcon icon={faRightLong}/></button>
 
+            <div>
+                <button disabled={page === 1} onClick={prevPage}><FontAwesomeIcon icon={faLeftLong}/></button>
+                <button onClick={backToFirst}>back to page 1</button>
+                <button onClick={nextPage}><FontAwesomeIcon icon={faRightLong}/></button>
+            </div>
+
+            {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
         </div>
     )
 }

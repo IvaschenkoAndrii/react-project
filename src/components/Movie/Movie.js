@@ -1,10 +1,15 @@
-function Movie ({movie}){
+import {NavLink} from "react-router-dom";
+
+function Movie({movie}) {
 
 
     return (
         <div>
-            {movie.id} {movie.title}
+            <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}></img>
+            <NavLink to={`/movies/${movie.id}`}><h4>{movie.title}</h4></NavLink>
         </div>
+
+
     )
 }
 

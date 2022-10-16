@@ -2,7 +2,9 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 
 import {MainLayout} from "./layouyts";
-import {MovieDetailed, MoviesPage, SearchResults} from "./pages";
+import {MovieDetailedPage, MoviesPage, SearchResults} from "./pages";
+import {NotFoundPage} from "./pages/NotFoundPage";
+import {MovieDetailed} from "./components";
 
 function App() {
 
@@ -10,11 +12,15 @@ function App() {
         <Routes>
             <Route path={'/'} element={<MainLayout/>}>
                 <Route index element={<Navigate to={'/movies'}/>}/>
-                <Route path={'/movies'} element={<MoviesPage/>}/>
-                <Route path={'/movie_details'} element={<MovieDetailed/>}/>
                 <Route path={'/search_results'} element={<SearchResults/>}/>
+
+                <Route path={'/movies'} element={<MoviesPage/>}>
+                    <Route path={':id'} element={<MovieDetailed/>}/>
+                </Route>
             </Route>
+            <Route path={'*'} element={<NotFoundPage/>}/>
         </Routes>
+
     );
 }
 

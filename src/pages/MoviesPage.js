@@ -1,9 +1,11 @@
-import {Movies} from "../components/Movies/Movies";
+import {Movies} from "../components";
+import {Outlet} from "react-router-dom";
 
-function MoviesPage (){
+function MoviesPage() {
     return (
         <div>
             <Movies/>
+            <Outlet/>
         </div>
     )
 }

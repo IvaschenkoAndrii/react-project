@@ -8,13 +8,9 @@ function MovieDetailed (){
 
     let {id} = useParams();
 
-
     const dispatch = useDispatch();
 
     const {movie}=useSelector(state => state.movieReducer)
-
-
-
 
     useEffect(()=>{
         dispatch(movieActions.getMovie({id}));
@@ -25,10 +21,9 @@ function MovieDetailed (){
 
     return (
         <div>
-            {/*{movie.title}*/}
-            123
+            {movie?.title}
         </div>
-    )
+    );
 }
 
 export {MovieDetailed}

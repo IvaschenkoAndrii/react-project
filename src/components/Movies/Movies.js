@@ -1,7 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {movieActions} from "../../redux/slices";
+import {useSearchParams} from "react-router-dom";
+
 import {Movie} from "../Movie/Movie";
+import {movieActions} from "../../redux";
 
 function Movies (){
 
@@ -9,15 +11,34 @@ function Movies (){
 
     const dispatch = useDispatch();
 
-    useEffect(()=>{
-        dispatch(movieActions.getAll());
-    },[])
+    const [query, setQuery] = useSearchParams({page:'1'});
 
-    console.log(totalPages);
-    console.log(page);
+    useEffect(() => {
+        dispatch(movieActions.getAll({page: query.get('page')}))
+    }, [query]);
+
+
+    const nextPage = () => {
+        setQuery(value => ({page: +value.get('page') + 1}))
+    }
+
+
+
+    function backToFirst() {
+        setQuery(value => ({page: 1}))
+    }
+
+
+    function prevPage() {
+        setQuery(value => ({page: value.get('page') - 1}))
+    }
+
     return (
         <div>
             {movies.map(movie=><Movie movie={movie} key={movie.id}/>)}
+            <button onClick={nextPage}>nextPage</button>
+            <button onClick={backToFirst}>back to page 1</button>
+            <button onClick={prevPage}>prevPage</button>
         </div>
     )
 }

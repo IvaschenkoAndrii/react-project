@@ -1,13 +1,19 @@
+import {Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 
-import {Movies} from "./components/Movies/Movies";
+import {MainLayout} from "./layouyts";
+import {MovieDetailed, MoviesPage, SearchResults} from "./pages";
 
 function App() {
 
     return (
-        <div>
-            <Movies/>
-        </div>
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route path={'/movies'} element={<MoviesPage/>}/>
+                <Route path={'/movie_details'} element={<MovieDetailed/>}/>
+                <Route path={'/search_results'} element={<SearchResults/>}/>
+            </Route>
+        </Routes>
     );
 }
 

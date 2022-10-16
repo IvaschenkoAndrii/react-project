@@ -3,7 +3,7 @@ function Movie ({movie}){
 
     return (
         <div>
-            {movie.id}
+            {movie.id} {movie.title}
         </div>
     )
 }

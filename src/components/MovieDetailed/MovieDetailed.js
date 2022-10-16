@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {Await, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 
@@ -13,17 +13,20 @@ function MovieDetailed (){
 
     const {movie}=useSelector(state => state.movieReducer)
 
-    console.log(id);
-    console.log(movie);
+
 
 
     useEffect(()=>{
         dispatch(movieActions.getMovie({id}));
     },[id])
 
+    console.log(id);
+    console.log(movie);
+
     return (
         <div>
-            xdfgdfgs
+            {/*{movie.title}*/}
+            123
         </div>
     )
 }

@@ -5,7 +5,6 @@ function MoviesPage() {
     return (
         <div>
             <Movies/>
-            <Outlet/>
         </div>
     )
 }

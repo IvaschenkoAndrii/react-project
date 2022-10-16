@@ -16,12 +16,14 @@ function MovieDetailed (){
         dispatch(movieActions.getMovie({id}));
     },[id])
 
-    console.log(id);
     console.log(movie);
 
     return (
         <div>
-            {movie?.title}
+            <h3>{movie?.title}</h3>
+            <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}></img>
+            <p>{movie?.overview}</p>
+            <p>Date of release {movie?.release_date}</p>
         </div>
     );
 }

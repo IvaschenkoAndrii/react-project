@@ -1,8 +1,13 @@
-import {Await, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
+import {CButton} from '@coreui/react';
+import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {movieActions} from "../../redux";
+import {Movie} from "../Movie/Movie";
+import {Genries} from "../Genries/Genries";
+
 
 function MovieDetailed() {
 
@@ -18,21 +23,27 @@ function MovieDetailed() {
         dispatch(movieActions.getMovie({id}));
     }, [id])
 
-    console.log(movie);
 
     return (
         <div>
-            <h3>{movie?.title}</h3>
-            <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}></img>
-            <p>{movie?.overview}</p>
-            <p>Date of release {movie?.release_date}</p>
-            <p>Gen</p>
 
             <div>
-                <button onClick={()=>navigate('/movies')}>Main Page</button>
+                <h3>{movie?.title}</h3>
+                <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}></img>
+                <p>{movie?.overview}</p>
+                <p>Date of release {movie?.release_date}</p>
+            </div>
+
+            <div>
+                {movie?.genres.map(genrie => <Genries genrie={genrie} key={genrie.id}/>)}
+            </div>
+
+            <div>
+                <CButton onClick={() => navigate('/movies')} color="danger">Main Page</CButton>
             </div>
 
         </div>
-    );}
+    );
+}
 
 export {MovieDetailed}

@@ -35,6 +35,7 @@ function Movies() {
         setQuery(value => ({page: value.get('page') - 1}))
     }
 
+    console.log(movies.length);
 
     return (
         <div>

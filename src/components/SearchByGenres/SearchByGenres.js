@@ -3,6 +3,7 @@ import {useEffect, useRef} from "react";
 import {CButton} from "@coreui/react";
 
 import {genrieActions} from "../../redux";
+import css from './SerchByGenres.module.css'
 
 function SearchByGenres() {
 
@@ -16,20 +17,21 @@ function SearchByGenres() {
 
     let searchString = useRef();
 
-    function searchByGenries() {
-        let filtered = genres?.filter(genrie => genrie.name === searchString.current.innerText);
+    function search() {
+        let filtered = genres?.filter(genrie => genrie.name === CButton.current.innerText);
         console.log(searchString);
-        console.log(filtered);
+        console.log(filtered[0].name);
     }
+
 
 
     return (
         <div>
-            {genres?.map(genrie => <CButton color="light" onClick={searchByGenries} ref={searchString}
-                                            key={genres?.id}>{genrie.name}</CButton>)}
-
+            {genres.map(genrie => <CButton onClick={search} className={css.CButton} value={genrie.id} color="light"
+                                           key={genrie.id}>{genrie.name}</CButton>)}
         </div>
-    );
+
+          );
 }
 
 export {SearchByGenres}

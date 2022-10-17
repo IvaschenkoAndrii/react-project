@@ -1,13 +1,13 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CBadge, CButton} from '@coreui/react';
+import {CButton} from '@coreui/react';
+import {Rating} from "@mui/material";
+
+
 import '@coreui/coreui/dist/css/coreui.min.css'
-
-
 import {movieActions} from "../../redux";
 import {Genries} from "../Genries/Genries";
-import {Rating} from "@mui/material";
 
 
 function MovieDetailed() {

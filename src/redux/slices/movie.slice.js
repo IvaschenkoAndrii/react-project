@@ -2,19 +2,19 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
 import {movieService} from "../../services";
 
-const initialState={
-    movies:[],
+const initialState = {
+    movies: [],
     movie: null,
-    movieGenre:[],
-    page:null,
-    totalPages:null
+    movieGenre: null,
+    page: null,
+    totalPages: null
 }
 
-const getAll = createAsyncThunk(
-    'movieSlice/getAll',
+const getAllByPages = createAsyncThunk(
+    'movieSlice/getAllByPages',
     async ({page}, {rejectWithValue}) => {
         try {
-            const {data} = await movieService.getAll(page);
+            const {data} = await movieService.getAllByPages(page);
             return data;
         } catch (e) {
             return rejectWithValue(e.response.data);
@@ -22,6 +22,17 @@ const getAll = createAsyncThunk(
     }
 );
 
+const getAll = createAsyncThunk(
+    'movieSlice/getAll',
+    async ({genre_ids}, {rejectWithValue}) => {
+        try {
+            const {data} = await movieService.getAllByPages(genre_ids);
+            return data;
+        } catch (e) {
+            return rejectWithValue(e.response.data);
+        }
+    }
+);
 
 const getMovie = createAsyncThunk(
     'movieSlice/getMovie',
@@ -37,26 +48,28 @@ const getMovie = createAsyncThunk(
 
 
 const movieSlice = createSlice({
-    name:'movieSlice',
+    name: 'movieSlice',
     initialState,
-    reducers:{},
+    reducers: {},
     extraReducers: builder =>
         builder
-            .addCase(getAll.fulfilled, (state, action) => {
+            .addCase(getAllByPages.fulfilled, (state, action) => {
                 state.movies = action.payload.results
-                state.totalPages=action.payload.total_pages
-                state.page=action.payload.page
-                state.movieGenres=action.payload.genre_ids
+                state.totalPages = action.payload.total_pages
+                state.page = action.payload.page
             })
-            .addCase(getMovie.fulfilled,(state,action)=>{
+            .addCase(getMovie.fulfilled, (state, action) => {
                 state.movie = action.payload;
+            })
+            .addCase(getAll.fulfilled, (state, action) => {
+                state.movieGenre = action.payload.results;
             })
 });
 
 const {reducer: movieReducer} = movieSlice
 
 const movieActions = {
-    getAll, getMovie
+    getAllByPages, getMovie, getAll
 }
 
 export {

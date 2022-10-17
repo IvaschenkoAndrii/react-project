@@ -19,7 +19,7 @@ function Movies() {
     const [query, setQuery] = useSearchParams({page: '1'});
 
     useEffect(() => {
-        dispatch(movieActions.getAll({page: query.get('page')}))
+        dispatch(movieActions.getAllByPages({page: query.get('page')}))
     }, [query]);
 
 
@@ -34,8 +34,6 @@ function Movies() {
     function prevPage() {
         setQuery(value => ({page: value.get('page') - 1}))
     }
-
-    console.log(movies.length);
 
     return (
         <div>

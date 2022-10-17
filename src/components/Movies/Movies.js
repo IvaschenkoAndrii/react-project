@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useSearchParams} from "react-router-dom";
 import {CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
@@ -7,6 +7,8 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {Movie} from "../Movie/Movie";
 import {movieActions} from "../../redux";
 import css from './Movies.module.css';
+import {Pagination, Typography} from "@mui/material";
+import usePagination from "@mui/material/usePagination";
 
 
 function Movies() {
@@ -36,13 +38,20 @@ function Movies() {
         setQuery(value => ({page: value.get('page') - 1}))
     }
 
+
     return (
         <div>
 
+
+            {/*<Typography>Page: {page}</Typography>*/}
+            {/*<Pagination count={10} page={page} onClick={nextPage} />*/}
+
+            {/*<Pagination onClick={nextPage} count={500} variant="outlined" shape="rounded" />*/}
+
                 <div>
-                    <CButton disabled={page === 1} onClick={prevPage} color="danger">Back   </CButton>
-                    <CButton onClick={backToFirst} color="danger">Main Page</CButton>
-                    <CButton onClick={nextPage} color="danger">   Next</CButton>
+                    <CButton disabled={page === 1} onClick={prevPage} color="">Back   </CButton>
+                    <CButton onClick={backToFirst} color="">Main Page</CButton>
+                    <CButton onClick={nextPage} color="">   Next</CButton>
                 </div>
 
 

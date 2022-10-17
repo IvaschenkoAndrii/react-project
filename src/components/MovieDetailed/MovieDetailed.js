@@ -4,8 +4,10 @@ import {useEffect} from "react";
 import {CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
 
+
 import {movieActions} from "../../redux";
 import {Genries} from "../Genries/Genries";
+import {Rating} from "@mui/material";
 
 
 function MovieDetailed() {
@@ -25,6 +27,8 @@ function MovieDetailed() {
 
     return (
         <div>
+
+            <Rating name="read-only" value={+movie?.vote_average} precision={0.5} max={10} readOnly />
 
             <div>
                 <h3>{movie?.title}</h3>

@@ -7,7 +7,7 @@ function MainLayout() {
         <div>
             <Header/>
             <h4></h4>
-            <Outlet></Outlet>
+            <Outlet/>
         </div>
     )
 }

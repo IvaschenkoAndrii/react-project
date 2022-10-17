@@ -1,11 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
-import {faLeftLong, faRightLong} from "@fortawesome/free-solid-svg-icons";
+import {CButton} from '@coreui/react';
+import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {Movie} from "../Movie/Movie";
 import {movieActions} from "../../redux";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import css from './Movies.module.css';
+
 
 function Movies() {
 
@@ -37,13 +39,17 @@ function Movies() {
     return (
         <div>
 
-            <div>
-                <button disabled={page === 1} onClick={prevPage}><FontAwesomeIcon icon={faLeftLong}/></button>
-                <button onClick={backToFirst}>back to page 1</button>
-                <button onClick={nextPage}><FontAwesomeIcon icon={faRightLong}/></button>
+                <div>
+                    <CButton disabled={page === 1} onClick={prevPage} color="danger">Back   </CButton>
+                    <CButton onClick={backToFirst} color="danger">Main Page</CButton>
+                    <CButton onClick={nextPage} color="danger">   Next</CButton>
+                </div>
+
+
+            <div className={css.cards}>
+                {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
             </div>
 
-            {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
         </div>
     )
 }

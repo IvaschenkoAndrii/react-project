@@ -5,7 +5,6 @@ import {CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {movieActions} from "../../redux";
-import {Movie} from "../Movie/Movie";
 import {Genries} from "../Genries/Genries";
 
 
@@ -39,7 +38,7 @@ function MovieDetailed() {
             </div>
 
             <div>
-                <CButton onClick={() => navigate('/movies')} color="danger">Main Page</CButton>
+                <CButton onClick={() => navigate('/movies/')} color="danger">Main Page</CButton>
             </div>
 
         </div>

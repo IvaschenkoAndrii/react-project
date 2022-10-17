@@ -5,7 +5,6 @@ function Genries ({genrie}){
 
     const {name} = genrie;
 
-    console.log(genrie);
     return (
         <div>
             <CBadge color="dark">{name}</CBadge>

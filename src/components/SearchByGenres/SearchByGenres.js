@@ -7,7 +7,9 @@ import css from './SerchByGenres.module.css'
 
 function SearchByGenres() {
 
-    let {genres} = useSelector(state => state.genrieReducer);
+    const {genres} = useSelector(state => state.genrieReducer);
+    const {movieGenre} = useSelector(state => state.movieReducer)
+
 
     const dispatch = useDispatch();
 
@@ -15,23 +17,23 @@ function SearchByGenres() {
         dispatch(genrieActions.getAll());
     }, [])
 
-    let searchString = useRef();
 
-    function search() {
-        let filtered = genres?.filter(genrie => genrie.name === CButton.current.innerText);
-        console.log(searchString);
-        console.log(filtered[0].name);
+
+    function search(id) {
+        let filtered = genres?.filter(genrie => genrie.id === id);
+        console.log(filtered);
     }
+
 
 
 
     return (
         <div>
-            {genres.map(genrie => <CButton onClick={search} className={css.CButton} value={genrie.id} color="light"
-                                           key={genrie.id}>{genrie.name}</CButton>)}
+            {genres.map(genrie => <CButton onClick={()=>search(genrie.id)} className={css.CButton} value={genrie.id}
+                                           color="light" key={genrie.id}>{genrie.name}</CButton>)}
         </div>
 
-          );
+    );
 }
 
 export {SearchByGenres}

@@ -5,12 +5,13 @@ import {movieService} from "../../services";
 const initialState={
     movies:[],
     movie: null,
+    movieGenre:[],
     page:null,
     totalPages:null
 }
 
 const getAll = createAsyncThunk(
-    'movie/getAll',
+    'movieSlice/getAll',
     async ({page}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getAll(page);
@@ -23,7 +24,7 @@ const getAll = createAsyncThunk(
 
 
 const getMovie = createAsyncThunk(
-    'movie/getMovie',
+    'movieSlice/getMovie',
     async ({id}, {rejectWithValue}) => {
         try {
             const {data} = await movieService.getMovie(id);
@@ -45,6 +46,7 @@ const movieSlice = createSlice({
                 state.movies = action.payload.results
                 state.totalPages=action.payload.total_pages
                 state.page=action.payload.page
+                state.movieGenres=action.payload.genre_ids
             })
             .addCase(getMovie.fulfilled,(state,action)=>{
                 state.movie = action.payload;

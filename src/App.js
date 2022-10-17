@@ -14,11 +14,12 @@ function App() {
                 <Route index element={<Navigate to={'/movies'}/>}/>
                 <Route path={'/search_results'} element={<SearchResults/>}/>
                 <Route path={'/movies'} element={<MoviesPage/>}/>
-                <Route path={'/search_genrie'} element={<SearchByGenriePage/>}/>
+
 
             </Route>
-            <Route path={'*'} element={<NotFoundPage/>}/>
+            <Route path={'/search_genrie'} element={<SearchByGenriePage/>}/>
             <Route path={'/movies/:id'} element={<MovieDetailed/>}/>
+            <Route path={'*'} element={<NotFoundPage/>}/>
         </Routes>
 
     );

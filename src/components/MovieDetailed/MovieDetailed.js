@@ -1,7 +1,7 @@
 import {useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {CButton} from '@coreui/react';
+import {CBadge, CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 

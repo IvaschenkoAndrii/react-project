@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useSearchParams} from "react-router-dom";
 import {CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
@@ -7,8 +7,7 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {Movie} from "../Movie/Movie";
 import {movieActions} from "../../redux";
 import css from './Movies.module.css';
-import {Pagination, Typography} from "@mui/material";
-import usePagination from "@mui/material/usePagination";
+
 
 
 function Movies() {
@@ -28,11 +27,9 @@ function Movies() {
         setQuery(value => ({page: +value.get('page') + 1}))
     }
 
-
     function backToFirst() {
         setQuery(value => ({page: 1}))
     }
-
 
     function prevPage() {
         setQuery(value => ({page: value.get('page') - 1}))

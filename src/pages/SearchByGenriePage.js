@@ -1,9 +1,9 @@
-import {SearchByGenries} from "../components";
+import {SearchByGenres} from "../components";
 
 function SearchByGenriePage (){
     return (
         <div>
-            <SearchByGenries/>
+            <SearchByGenres/>
         </div>
     )
 }

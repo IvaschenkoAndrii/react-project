@@ -48,7 +48,7 @@ function Movies() {
                 <div>
                     <CButton disabled={page === 1} onClick={prevPage} color="">Back   </CButton>
                     <CButton onClick={backToFirst} color="">Main Page</CButton>
-                    <CButton onClick={nextPage} color="">   Next</CButton>
+                    <CButton disabled={page === 500} onClick={nextPage} color="">   Next</CButton>
                 </div>
 
 

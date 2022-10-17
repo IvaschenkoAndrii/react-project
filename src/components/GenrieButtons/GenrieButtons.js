@@ -1,7 +1,7 @@
-function GenrieButtons (){
+function GenrieButtons ({genrie,searchByGenries,searchString}){
     return (
         <div>
-            GenrieButtons
+            <button onClick={searchByGenries} ref={searchString}>{genrie}</button>
         </div>
     )
 }

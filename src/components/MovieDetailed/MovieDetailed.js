@@ -7,7 +7,7 @@ import {Rating} from "@mui/material";
 
 import '@coreui/coreui/dist/css/coreui.min.css'
 import {movieActions} from "../../redux";
-import {Genries} from "../Genries/Genries";
+import {GenriesOnMovieDetailed} from "../GenriesOnMovieDetailed/GenriesOnMovieDetailed";
 
 
 function MovieDetailed() {
@@ -38,7 +38,7 @@ function MovieDetailed() {
             </div>
 
             <div>
-                {movie?.genres.map(genrie => <Genries genrie={genrie} key={genrie.id}/>)}
+                {movie?.genres.map(genrie => <GenriesOnMovieDetailed genrie={genrie} key={genrie.id}/>)}
             </div>
 
             <div>

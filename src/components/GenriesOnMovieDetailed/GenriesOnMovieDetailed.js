@@ -1,7 +1,7 @@
 import {CBadge} from "@coreui/react";
 import '@coreui/coreui/dist/css/coreui.min.css'
 
-function Genries ({genrie}){
+function GenriesOnMovieDetailed ({genrie}){
 
     const {name} = genrie;
 
@@ -12,4 +12,4 @@ function Genries ({genrie}){
     )
 }
 
-export {Genries}
+export {GenriesOnMovieDetailed}

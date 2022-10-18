@@ -4,11 +4,14 @@ import {CButton} from "@coreui/react";
 
 import {genrieActions, movieActions} from "../../../redux";
 import css from './SerchByGenres.module.css'
+import {useSearchParams} from "react-router-dom";
 
 function SearchByGenres() {
 
     const {genres} = useSelector(state => state.genrieReducer);
     const {movieGenre} = useSelector(state => state.movieReducer)
+
+    const [query, setQuery] = useSearchParams({with_genres: ''});
 
 
     const dispatch = useDispatch();
@@ -18,38 +21,36 @@ function SearchByGenres() {
     }, [])
 
     useEffect((id) => {
-        dispatch(movieActions.getAll({genres_ids: id}))
-    }, [])
+        dispatch(movieActions.getByGenrie({with_genres: query.get('with_genres'), page: query.get('page')}))
+    }, [query])
 
 
+    function setQueryGenrie(id) {
+        setQuery(value => ({with_genres: id,page:1}))
+    }
 
 
+    const nextPage = () => {
+        setQuery(value => ({page: +value.get('page') + 1}))
+    }
 
 
-    // for (const genre of movieGenre) {
-    //     console.log(genre);
-    //     for (let i = 0; i < genre.length; i++) {
-    //         console.log(genre_ids[i]);
-    //     }
-    // }
+    function prevPage() {
+        setQuery(value => ({page: value.get('page') - 1}))
+    }
 
 
-    // function search(id) {
-    //     // let filtered = movieGenre.filter(genrie => genrie.id === genre_ids);
-    //     // console.log(filtered);
-    //     let filtered = movieGenre?.map(genrie => genrie.genre_ids.filter(value => value === id));
-    //     console.log(filtered);
-    // }
-
+    console.log(movieGenre);
 
     return (
         <div>
-           <div>
-               {genres.map(genrie => <CButton onClick={() => search(genrie.id)} className={css.CButton} value={genrie.id}
-                                               color="light" key={genrie.id}>{genrie.name}</CButton>)}
-           </div>
             <div>
-
+                {genres.map(genrie => <CButton onClick={()=>setQueryGenrie(genrie.id)} className={css.CButton}
+                                               value={genrie.id} color="light" key={genrie.id}>{genrie.name}</CButton>)}
+            </div>
+            <div>
+                <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="">Back   </CButton>
+                <CButton disabled={movieGenre.page === 500} onClick={nextPage} color="">   Next</CButton>
             </div>
         </div>
 

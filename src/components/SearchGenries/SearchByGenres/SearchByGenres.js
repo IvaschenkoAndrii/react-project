@@ -1,10 +1,11 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useRef} from "react";
 import {CButton} from "@coreui/react";
+import {useSearchParams} from "react-router-dom";
 
 import {genrieActions, movieActions} from "../../../redux";
 import css from './SerchByGenres.module.css'
-import {useSearchParams} from "react-router-dom";
+import {GenrieSearchResults} from "../GenrieSearchResults/GenrieSearchResults";
 
 function SearchByGenres() {
 
@@ -31,12 +32,12 @@ function SearchByGenres() {
 
 
     const nextPage = () => {
-        setQuery(value => ({page: +value.get('page') + 1}))
+        setQuery(value => ({with_genres: query.get('with_genres'),page: +value.get('page') + 1}))
     }
 
 
     function prevPage() {
-        setQuery(value => ({page: value.get('page') - 1}))
+        setQuery(value => ({with_genres: query.get('with_genres'),page: value.get('page') - 1}))
     }
 
 
@@ -48,9 +49,18 @@ function SearchByGenres() {
                 {genres.map(genrie => <CButton onClick={()=>setQueryGenrie(genrie.id)} className={css.CButton}
                                                value={genrie.id} color="light" key={genrie.id}>{genrie.name}</CButton>)}
             </div>
+
+            <hr/>
+
+            <div>
+                {movieGenre.results?.map(movie=>{<GenrieSearchResults movie={movie} key={movie.id}/>})}
+            </div>
+
+            <hr/>
+
             <div>
                 <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="">Back   </CButton>
-                <CButton disabled={movieGenre.page === 500} onClick={nextPage} color="">   Next</CButton>
+                <CButton disabled={movieGenre.page === movieGenre.totalPages} onClick={nextPage} color="">   Next</CButton>
             </div>
         </div>
 

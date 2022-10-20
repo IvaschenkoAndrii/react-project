@@ -10,6 +10,7 @@ import {GenrieSearchResults} from "../GenrieSearchResults/GenrieSearchResults";
 function SearchByGenres() {
 
     const {genres} = useSelector(state => state.genrieReducer);
+
     const {movieGenre} = useSelector(state => state.movieReducer)
 
     const [query, setQuery] = useSearchParams({with_genres: ''});
@@ -18,10 +19,10 @@ function SearchByGenres() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(genrieActions.getAll())
+        dispatch(genrieActions.getAllGenries())
     }, [])
 
-    useEffect((id) => {
+    useEffect(() => {
         dispatch(movieActions.getByGenrie({with_genres: query.get('with_genres'), page: query.get('page')}))
     }, [query])
 
@@ -41,8 +42,6 @@ function SearchByGenres() {
     }
 
 
-    console.log(movieGenre);
-
     return (
         <div>
             <div>
@@ -53,7 +52,7 @@ function SearchByGenres() {
             <hr/>
 
             <div>
-                {movieGenre.results?.map(movie=>{<GenrieSearchResults movie={movie} key={movie.id}/>})}
+                {movieGenre.results?.map(movie=><GenrieSearchResults movie={movie} key={movie.id}/>)}
             </div>
 
             <hr/>

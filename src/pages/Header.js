@@ -37,7 +37,8 @@ function Header (){
     function setQueryGenrie(data) {
         console.log(data);
         setQuery(value => ({query: data.searchString,page:1}))
-        navigate('/search_results')
+        console.log(data.searchString);
+        navigate(`/search_results/${data.searchString}`)
     }
 
     return (

@@ -12,7 +12,7 @@ function App() {
 
             <Route path={'/'} element={<MainLayout/>}>
                 <Route index element={<Navigate to={'/movies'}/>}/>
-                <Route path={'/search_results'} element={<SearchResultsPage/>}/>
+                <Route path={'/search_results/:searchParams'} element={<SearchResultsPage/>}/>
                 <Route path={'/movies'} element={<MoviesPage/>}/>
             </Route>
 

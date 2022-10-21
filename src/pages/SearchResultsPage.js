@@ -1,7 +1,9 @@
+import {SearchResults} from "../components";
+
 function SearchResultsPage (){
     return (
         <div>
-            SearchResults
+            <SearchResults/>
         </div>
     )
 }

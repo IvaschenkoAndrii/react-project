@@ -12,34 +12,14 @@ function Header (){
 
     const {account} = useSelector(state => state.accountReducer);
 
-    const {searched} = useSelector(state => state.searchReducer);
-
-    const dispatch = useDispatch();
-
     const navigate = useNavigate();
 
-    const {handleSubmit, register, reset} = useForm();
-
-    const [query, setQuery] = useSearchParams({query: ''});
-
+    const dispatch = useDispatch();
 
     useEffect(()=>{
         dispatch(accountActions.getAccountDetails());
     },[])
 
-
-    useEffect((id) => {
-        dispatch(searchActions.getSearchedMovies({query: query.get('query'), page: query.get('page')}))
-    }, [query])
-
-    console.log(searched);
-
-    function setQueryGenrie(data) {
-        console.log(data);
-        setQuery(value => ({query: data.searchString,page:1}))
-        console.log(data.searchString);
-        navigate(`/search_results/${data.searchString}`)
-    }
 
     return (
         <div>
@@ -47,18 +27,17 @@ function Header (){
                 <button onClick={() => navigate('/search_genrie')}>Search by genrie</button>
             </div>
 
+            <div>
+                <button onClick={() => navigate('/search_results')}>Search movies</button>
+            </div>
+
             <FontAwesomeIcon icon={faMoon}/>
 
-            <form onSubmit={handleSubmit(setQueryGenrie)}>
-                <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
-                <button>Search</button>
-            </form>
+
 
             <div>
                 {account.username}
             </div>
-
-
         </div>
     );
 }

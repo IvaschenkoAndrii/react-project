@@ -4,6 +4,8 @@ import {searchService} from "../../services/search.service";
 
 const initialState={
     searched:[],
+    page: null,
+    totalPages: null
 
 }
 

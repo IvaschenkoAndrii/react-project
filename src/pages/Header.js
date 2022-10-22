@@ -1,14 +1,15 @@
-import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {CButton} from '@coreui/react';
+import '@coreui/coreui/dist/css/coreui.min.css'
 import {useDispatch, useSelector} from "react-redux";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
-import {useForm} from "react-hook-form";
-import {accountActions, movieActions, searchActions} from "../redux";
-import {SearchResults} from "../components";
+
+import {accountActions} from "../redux";
+import css from './Header.module.css';
 
 
-function Header (){
+
+function Header() {
 
     const {account} = useSelector(state => state.accountReducer);
 
@@ -16,26 +17,24 @@ function Header (){
 
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(accountActions.getAccountDetails());
-    },[])
+    }, [])
 
+
+    console.log(account);
 
     return (
-        <div>
+        <div className={css.wrap}>
             <div>
-                <button onClick={() => navigate('/search_genrie')}>Search by genrie</button>
+                <CButton onClick={() => navigate('/search_genrie')} color="">Search by genrie</CButton>
+
+                <CButton onClick={() => navigate('/search_results')} color="">Search movies</CButton>
             </div>
 
-            <div>
-                <button onClick={() => navigate('/search_results')}>Search movies</button>
-            </div>
+            {/*<FontAwesomeIcon icon={faMoon}/>*/}
 
-            <FontAwesomeIcon icon={faMoon}/>
-
-
-
-            <div>
+            <div className={css.account}>
                 {account.username}
             </div>
         </div>

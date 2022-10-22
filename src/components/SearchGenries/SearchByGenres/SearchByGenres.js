@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useRef} from "react";
+import {useEffect} from "react";
 import {CButton} from "@coreui/react";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 
 import {genrieActions, movieActions} from "../../../redux";
 import css from './SerchByGenres.module.css'
@@ -15,6 +15,7 @@ function SearchByGenres() {
 
     const [query, setQuery] = useSearchParams({with_genres: ''});
 
+    const navigate = useNavigate();
 
     const dispatch = useDispatch();
 
@@ -28,38 +29,46 @@ function SearchByGenres() {
 
 
     function setQueryGenrie(id) {
-        setQuery(value => ({with_genres: id,page:1}))
+        setQuery(value => ({with_genres: id, page: 1}))
     }
 
 
     const nextPage = () => {
-        setQuery(value => ({with_genres: query.get('with_genres'),page: +value.get('page') + 1}))
+        setQuery(value => ({with_genres: query.get('with_genres'), page: +value.get('page') + 1}));
+        window.scrollTo(0, 0);
     }
 
 
     function prevPage() {
-        setQuery(value => ({with_genres: query.get('with_genres'),page: value.get('page') - 1}))
+        setQuery(value => ({with_genres: query.get('with_genres'), page: value.get('page') - 1}));
+        window.scrollTo(0, 0);
     }
 
+
+    function backToMain() {
+        navigate('/movies')
+    }
 
     return (
         <div>
             <div>
-                {genres.map(genrie => <CButton onClick={()=>setQueryGenrie(genrie.id)} className={css.CButton}
+                {genres.map(genrie => <CButton onClick={() => setQueryGenrie(genrie.id)} className={css.CButton}
                                                value={genrie.id} color="light" key={genrie.id}>{genrie.name}</CButton>)}
             </div>
 
             <hr/>
 
-            <div>
-                {movieGenre.results?.map(movie=><GenrieSearchResults movie={movie} key={movie.id}/>)}
+            <div className={css.cards}>
+                {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}
             </div>
 
             <hr/>
 
-            <div>
-                <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="">Back   </CButton>
-                <CButton disabled={movieGenre.page === movieGenre.totalPages} onClick={nextPage} color="">   Next</CButton>
+            <div className={css.buttons}>
+                <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="">Back </CButton>
+                <CButton onClick={backToMain} color="">Main Page</CButton>
+                <CButton disabled={movieGenre.page === movieGenre.totalPages} onClick={nextPage}
+                         color=""> Next</CButton>
             </div>
         </div>
 

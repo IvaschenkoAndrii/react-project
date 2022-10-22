@@ -8,6 +8,7 @@ import {Rating} from "@mui/material";
 import '@coreui/coreui/dist/css/coreui.min.css'
 import {movieActions} from "../../redux";
 import {GenriesOnMovieDetailed} from "../GenriesOnMovieDetailed/GenriesOnMovieDetailed";
+import css from "./MovieDetailed.module.css"
 
 
 function MovieDetailed() {
@@ -27,25 +28,29 @@ function MovieDetailed() {
 
     return (
         <div>
+            <div className={css.wrapmovie}>
 
-            <Rating name="read-only" value={+movie?.vote_average} precision={0.5} max={10} readOnly />
+                <div className={css.image}>
+                    <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`} alt={movie.title}></img>
+                </div>
 
-            <div>
-                <h3>{movie?.title}</h3>
-                <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`}></img>
-                <p>{movie?.overview}</p>
-                <p>Date of release {movie?.release_date}</p>
+                <div className={css.movieDetails}>
+                    <h3>{movie?.title}</h3>
+                    <p>{movie?.overview}</p>
+                    <p>Date of release {movie?.release_date}</p>
+                    <Rating name="read-only" value={+movie?.vote_average} precision={0.5} max={10} readOnly/>
+
+                    <div>
+                        {movie?.genres.map(genrie => <GenriesOnMovieDetailed genrie={genrie} key={genrie.id}/>)}
+                    </div>
+                </div>
             </div>
 
-            <div>
-                {movie?.genres.map(genrie => <GenriesOnMovieDetailed genrie={genrie} key={genrie.id}/>)}
+            <div className={css.button}>
+                <CButton onClick={() => navigate('/movies/')} color="secondary">Main Page</CButton>
             </div>
-
-            <div>
-                <CButton onClick={() => navigate('/movies/')} color="danger">Main Page</CButton>
-            </div>
-
         </div>
+
     );
 }
 

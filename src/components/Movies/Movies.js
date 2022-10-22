@@ -12,7 +12,7 @@ import css from './Movies.module.css';
 
 function Movies() {
 
-    let {movies, totalPages, page} = useSelector(state => state.movieReducer);
+    let {movies, page} = useSelector(state => state.movieReducer);
 
     const dispatch = useDispatch();
 
@@ -25,34 +25,30 @@ function Movies() {
 
     const nextPage = () => {
         setQuery(value => ({page: +value.get('page') + 1}))
+        window.scrollTo(0, 0);
     }
 
-    function backToFirst() {
+    function backToMain() {
         setQuery(value => ({page: 1}))
+        window.scrollTo(0, 0);
     }
 
     function prevPage() {
         setQuery(value => ({page: value.get('page') - 1}))
+        window.scrollTo(0, 0);
     }
 
     return (
         <div>
 
-
-            {/*<Typography>Page: {page}</Typography>*/}
-            {/*<Pagination count={10} page={page} onClick={nextPage} />*/}
-
-            {/*<Pagination onClick={nextPage} count={500} variant="outlined" shape="rounded" />*/}
-
-                <div>
-                    <CButton disabled={page === 1} onClick={prevPage} color="">Back   </CButton>
-                    <CButton onClick={backToFirst} color="">Main Page</CButton>
-                    <CButton disabled={page === 500} onClick={nextPage} color="">   Next</CButton>
-                </div>
-
-
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
+            </div>
+
+            <div className={css.buttons}>
+                <CButton disabled={page === 1} onClick={prevPage} color="">Back   </CButton>
+                <CButton onClick={backToMain} color="">Main Page</CButton>
+                <CButton disabled={page === 500} onClick={nextPage} color="">   Next</CButton>
             </div>
 
         </div>

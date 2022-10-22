@@ -1,0 +1,17 @@
+.wrapmovie{
+    display: flex;
+}
+
+.image{
+    margin: 20px;
+}
+
+.movie-details{
+
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

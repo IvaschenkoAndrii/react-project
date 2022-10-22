@@ -1,12 +1,9 @@
 import {NavLink} from "react-router-dom";
-
-import css from './movie.module.css'
 import {Rating} from "@mui/material";
 
-function Movie({movie}) {
+import css from "../../Movie/movie.module.css";
 
-
-
+function GenrieSearchResults ({movie}){
     return (
         <div className={css.card}>
             <NavLink to={`/movies/${movie.id}`}>
@@ -26,4 +23,4 @@ function Movie({movie}) {
     )
 }
 
-export {Movie}
+export {GenrieSearchResults}

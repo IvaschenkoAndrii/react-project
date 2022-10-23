@@ -12,7 +12,6 @@ function MainLayout() {
     return (
         <div id={themes.body}>
             <Header/>
-            <h4></h4>
             <Outlet/>
         </div>
     )

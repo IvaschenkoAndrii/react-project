@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function SwitchTheme() {
 
-    const light_themes = {
+    const light = {
         header: 'header_light',
         movies: 'movies_light',
         searchResults: 'searchResults_light',
@@ -18,7 +18,7 @@ function SwitchTheme() {
         genres: 'genres_light'
     };
 
-    const dark_themes = {
+    const dark = {
         header: 'header_dark',
         movies: 'movies_dark',
         searchResults: 'searchResults_dark',
@@ -36,9 +36,9 @@ function SwitchTheme() {
 
     function switchTheme() {
         themes.header === 'header_light' ?
-            dispatch(themeActions.setTheme({...dark_themes})) :
-            dispatch(themeActions.setTheme({...light_themes}));
-    };
+            dispatch(themeActions.setTheme({...dark})) :
+            dispatch(themeActions.setTheme({...light}));
+    }
 
     return (<div>
 

@@ -6,7 +6,7 @@ body {
   box-sizing: border-box;
 }
 
-#movies_dark {
+#movies_dark{
   background-color: #312d2d;
   box-shadow: 1px 4px 12px 2px black;
 }

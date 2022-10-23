@@ -7,6 +7,7 @@ import {CButton} from "@coreui/react";
 import {searchActions} from "../../redux";
 import {SearchResultMoviesList} from "../SearchResultMoviesList/SearchResultMoviesList";
 import css from "./SearchResults.module.css"
+import {Movie} from "../Movie/Movie";
 
 function SearchResults() {
 
@@ -57,7 +58,7 @@ function SearchResults() {
 
 
             <div className={css.cards}>
-                {searched.results?.map(movie => <SearchResultMoviesList movie={movie} id={movie.id}/>)}
+                {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
             </div>
 
 

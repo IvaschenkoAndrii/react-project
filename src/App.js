@@ -17,9 +17,7 @@ function App() {
                 <Route path={'/movies/:id'} element={<MovieDetailedPage/>}/>
             </Route>
 
-            {/*<Route path={'/search_results'} element={<SearchResultsPage/>}/>*/}
             <Route path={'/search_genrie'} element={<SearchByGenriePage/>}/>
-
             <Route path={'*'} element={<NotFoundPage/>}/>
         </Routes>
 

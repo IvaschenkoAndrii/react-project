@@ -11,6 +11,10 @@
 
 }
 
+.search-form{
+    background: whitesmoke;
+}
+
 .button{
     display: flex;
     justify-content: center;

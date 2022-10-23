@@ -1,13 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {Movie} from "../Movie/Movie";
-import {movieActions} from "../../redux";
+import {movieActions as moviesActions, movieActions, searchActions} from "../../redux";
 import css from './Movies.module.css';
-import {SearchResults} from "../SearchResults/SearchResults";
 import {useForm} from "react-hook-form";
 
 
@@ -20,6 +19,7 @@ function Movies() {
     const {handleSubmit, register, reset} = useForm();
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [query, setQuery] = useSearchParams({page: '1'});
 
@@ -27,10 +27,21 @@ function Movies() {
         dispatch(movieActions.getAllByPages({page: query.get('page')}))
     }, [query]);
 
+    useEffect(() => {
+        if (!query.get('query')) {
+            dispatch(moviesActions.getAllByPages({
+                page: query.get('page'),
+             }));
+        } else {
+            dispatch(searchActions.getSearchedMovies({page: query.get('page'), query: query.get('query')}))
+        }
+
+    }, [query,page]);
+
 
     function backToMain() {
-        setQuery({page: 1})
-        window.scrollTo(0, 0);
+        navigate('/movies')
+        window.location.reload();
     }
 
 
@@ -58,16 +69,17 @@ function Movies() {
         reset();
     }
 
+    // console.log(searched.results.length);
 
     return (
         <div className={css.wrapMovies} id={themes.movies}>
 
-            <form onSubmit={handleSubmit(setSearch)}>
+            <form onSubmit={handleSubmit(setSearch)} className={css.searchForm}>
                 <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
                 <button>Search</button>
             </form>
 
-            {searched?
+            {searched.results ?
             <div className={css.cards}>
                 {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
             </div>

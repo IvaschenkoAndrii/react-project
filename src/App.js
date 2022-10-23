@@ -1,10 +1,10 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 
-import {MainLayout} from "./layouyts";
+import {MainLayout} from "./layouts";
 import {MovieDetailedPage, MoviesPage, SearchByGenriePage, SearchResultsPage} from "./pages";
 import {NotFoundPage} from "./pages/NotFoundPage";
-import {SearchResults} from "./components";
+
 
 function App() {
 

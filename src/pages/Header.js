@@ -6,7 +6,7 @@ import {useEffect} from "react";
 
 import {accountActions} from "../redux";
 import css from './Header.module.css';
-
+import {SwitchTheme} from "../components";
 
 
 function Header() {
@@ -14,6 +14,8 @@ function Header() {
     const {account} = useSelector(state => state.accountReducer);
 
     const navigate = useNavigate();
+
+    const {themes} = useSelector(state => state.themeReducer);
 
     const dispatch = useDispatch();
 
@@ -25,14 +27,14 @@ function Header() {
     console.log(account);
 
     return (
-        <div className={css.wrap}>
-            <div>
+        <div className={css.wrap} id={themes.header}>
+            <div className={css.buttons}>
                 <CButton onClick={() => navigate('/search_genrie')} color="">Search by genrie</CButton>
 
                 <CButton onClick={() => navigate('/search_results')} color="">Search movies</CButton>
             </div>
 
-            {/*<FontAwesomeIcon icon={faMoon}/>*/}
+            <SwitchTheme/>
 
             <div className={css.account}>
                 {account.username}

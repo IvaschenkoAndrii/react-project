@@ -3,6 +3,10 @@
     width: 20%;
 }
 
+.card:hover {
+    opacity: 0.7;
+}
+
 .card img{
     height: 300px;
     width: 200px;

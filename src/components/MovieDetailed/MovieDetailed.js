@@ -31,7 +31,7 @@ function MovieDetailed() {
             <div className={css.wrapmovie}>
 
                 <div className={css.image}>
-                    <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`} alt={movie.title}></img>
+                    <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`} ></img>
                 </div>
 
                 <div className={css.movieDetails}>
@@ -47,6 +47,7 @@ function MovieDetailed() {
             </div>
 
             <div className={css.button}>
+                <CButton onClick={() => navigate(-1)} color="secondary">Back</CButton>
                 <CButton onClick={() => navigate('/movies/')} color="secondary">Main Page</CButton>
             </div>
         </div>

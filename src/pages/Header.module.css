@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    background: azure;
+    background: darkgray;
 }
 
 .account{
@@ -11,4 +11,9 @@
     font-style: italic;
     color: cornflowerblue;
     margin-right: 10px;
+}
+
+.buttons button{
+    color: black;
+    font-weight: inherit;
 }

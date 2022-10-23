@@ -32,9 +32,9 @@ function Header() {
     return (
         <div className={css.wrap} id={themes.header}>
             <div className={css.buttons}>
-                <CButton onClick={() => navigate('/search_genrie')} color="">Search by genrie</CButton>
+                <CButton onClick={() => navigate('/search_genrie')} color="secondary" variant="outline">Search by genrie</CButton>
 
-                <CButton onClick={backToMain} color="">Main Page</CButton>
+                <CButton onClick={backToMain} color="secondary" variant="outline">Main Page</CButton>
             </div>
 
             <div className={css.switchTheme}>

@@ -23,3 +23,18 @@
 .button button {
     margin: 10px;
 }
+
+.badge{
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.overview{
+    font-weight: bolder;
+    text-align: justify;
+    margin-right: 20px;
+}
+
+.release{
+    font-weight: normal;
+}

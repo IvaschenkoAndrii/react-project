@@ -36,13 +36,14 @@ function MovieDetailed() {
 
                 <div className={css.movieDetails}>
                     <h3>{movie?.title}</h3>
-                    <p>{movie?.overview}</p>
-                    <p>Date of release {movie?.release_date}</p>
-                    <Rating name="read-only" value={+movie?.vote_average} precision={0.5} max={10} readOnly/>
-
-                    <div>
+                    <div className={css.badge}>
                         {movie?.genres.map(genrie => <GenriesOnMovieDetailed genrie={genrie} key={genrie.id}/>)}
                     </div>
+                    <p className={css.overview}>{movie?.overview}</p>
+                    <p className={css.release}>Date of release {movie?.release_date}</p>
+                    <Rating name="read-only" value={+movie?.vote_average} precision={0.5} max={10} readOnly/>
+
+
                 </div>
             </div>
 

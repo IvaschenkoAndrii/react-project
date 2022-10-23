@@ -7,7 +7,7 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {Movie} from "../Movie/Movie";
 import {movieActions} from "../../redux";
 import css from './Movies.module.css';
-
+import {SearchResults} from "../SearchResults/SearchResults";
 
 
 function Movies() {
@@ -23,32 +23,43 @@ function Movies() {
     }, [query]);
 
 
-    const nextPage = () => {
-        setQuery(value => ({page: +value.get('page') + 1}))
-        window.scrollTo(0, 0);
-    }
-
     function backToMain() {
-        setQuery(value => ({page: 1}))
+        setQuery({page: 1})
         window.scrollTo(0, 0);
     }
 
-    function prevPage() {
-        setQuery(value => ({page: value.get('page') - 1}))
+
+    const prevPage = () => {
+        if (query.get('query')) {
+            setQuery(value => ({query: query.get('query'), page: value.get('page') - 1}));
+                } else {
+            setQuery(value => ({page: value.get('page') - 1}));
+        }
         window.scrollTo(0, 0);
-    }
+    };
+
+    const nextPage = () => {
+        if (query.get('query')) {
+            setQuery(value => ({query: query.get('query'), page: +value.get('page') + 1}));
+        } else {
+            setQuery(value => ({page: +value.get('page') + 1}));
+        }
+        window.scrollTo(0, 0);
+    };
+
+
 
     return (
-        <div>
-
+        <div className={css.wrapMovies}>
+            <SearchResults/>
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
             </div>
 
             <div className={css.buttons}>
-                <CButton disabled={page === 1} onClick={prevPage} color="">Back   </CButton>
+                <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>
                 <CButton onClick={backToMain} color="">Main Page</CButton>
-                <CButton disabled={page === 500} onClick={nextPage} color="">   Next</CButton>
+                <CButton disabled={page === 500} onClick={nextPage} color=""> Next</CButton>
             </div>
 
         </div>

@@ -1,6 +1,7 @@
 .card{
     height: 450px;
     width: 20%;
+    background: whitesmoke;
 }
 
 .card:hover {

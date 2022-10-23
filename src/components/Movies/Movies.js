@@ -1,54 +1,94 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {useSearchParams} from "react-router-dom";
+import {useNavigate, useSearchParams} from "react-router-dom";
 import {CButton} from '@coreui/react';
+import {useForm} from "react-hook-form";
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {Movie} from "../Movie/Movie";
-import {movieActions} from "../../redux";
+import {movieActions, searchActions} from "../../redux";
 import css from './Movies.module.css';
-
 
 
 function Movies() {
 
-    let {movies, page} = useSelector(state => state.movieReducer);
+    const {movies, page, totalPages} = useSelector(state => state.movieReducer);
+    const {searched} = useSelector(state => state.searchReducer);
+    const {themes} = useSelector(state => state.themeReducer);
+
+    const {handleSubmit, register, reset} = useForm();
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [query, setQuery] = useSearchParams({page: '1'});
 
+
     useEffect(() => {
-        dispatch(movieActions.getAllByPages({page: query.get('page')}))
-    }, [query]);
+        if (!query.get('query')) {
+            dispatch(movieActions.getAllByPages({
+                page: query.get('page'),
+            }));
+        } else {
+            dispatch(searchActions.getSearchedMovies({page: query.get('page'), query: query.get('query')}))
+        }
+    }, [query, page]);
 
-
-    const nextPage = () => {
-        setQuery(value => ({page: +value.get('page') + 1}))
-        window.scrollTo(0, 0);
-    }
 
     function backToMain() {
-        setQuery(value => ({page: 1}))
-        window.scrollTo(0, 0);
+        navigate('/movies')
+        window.location.reload();
     }
 
-    function prevPage() {
-        setQuery(value => ({page: value.get('page') - 1}))
+
+    const prevPage = () => {
+        if (query.get('query')) {
+            setQuery(value => ({query: query.get('query'), page: value.get('page') - 1}));
+        } else {
+            setQuery(value => ({page: value.get('page') - 1}));
+        }
         window.scrollTo(0, 0);
+    };
+
+    const nextPage = () => {
+        if (query.get('query')) {
+            setQuery(value => ({query: query.get('query'), page: +value.get('page') + 1}));
+        } else {
+            setQuery(value => ({page: +value.get('page') + 1}));
+        }
+        window.scrollTo(0, 0);
+    };
+
+
+    function setSearch(data) {
+        setQuery({query: data.searchString, page: 1})
+        reset();
     }
+
 
     return (
         <div>
 
-            <div className={css.cards}>
-                {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
+            <div className={css.searchform} id={themes.searchForm}>
+                <form onSubmit={handleSubmit(setSearch)}>
+                    <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
+                    <button>Search</button>
+                </form>
             </div>
 
-            <div className={css.buttons}>
-                <CButton disabled={page === 1} onClick={prevPage} color="">Back   </CButton>
+            {searched.results ?
+                <div className={css.cards}>
+                    {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
+                </div>
+                :
+                <div className={css.cards} >
+                    {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
+                </div>}
+
+            <div className={css.buttons} id={themes.buttons}>
+                <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>
                 <CButton onClick={backToMain} color="">Main Page</CButton>
-                <CButton disabled={page === 500} onClick={nextPage} color="">   Next</CButton>
+                <CButton disabled={page === totalPages} onClick={nextPage} color=""> Next</CButton>
             </div>
 
         </div>

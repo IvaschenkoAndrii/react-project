@@ -46,7 +46,8 @@ function SearchByGenres() {
 
 
     function backToMain() {
-        navigate('/movies')
+        navigate('/movies');
+        window.location.reload();
     }
 
     return (

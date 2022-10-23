@@ -1,17 +1,40 @@
-.wrapmovie{
+.wrapcard {
+    background: whitesmoke;
+}
+
+.movie {
     display: flex;
 }
 
-.image{
+.image {
     margin: 20px;
 }
 
-.movie-details{
-
+.movie h3 {
+    padding-top: 30px;
 }
 
-.button{
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button button {
+    margin: 10px;
+}
+
+.badge{
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.overview{
+    font-weight: bolder;
+    text-align: justify;
+    margin-right: 20px;
+}
+
+.release{
+    font-weight: normal;
 }

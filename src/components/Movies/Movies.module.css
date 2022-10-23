@@ -5,10 +5,32 @@
 }
 
 .buttons{
-    margin-top: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: whitesmoke;
+}
+
+.searchform{
+    background: whitesmoke;
+    display: flex;
+    justify-content:center;
+    padding-right: 30px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.searchform input{
+    width: 1000px;
+}
+
+.searchform button{
+    border-radius: 20px;
+}
+
+.searchform button:hover{
+    opacity: 0.5;
 }

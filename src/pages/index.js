@@ -1,5 +1,5 @@
 export * from './SearchByGenriePage';
-export * from './Header';
+export * from '../components/Header/Header';
 export * from './MovieDetailedPage';
 export * from './MoviesPage';
 export * from './SearchResultsPage';

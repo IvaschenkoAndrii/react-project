@@ -10,8 +10,8 @@ import {GenrieSearchResults} from "../GenrieSearchResults/GenrieSearchResults";
 function SearchByGenres() {
 
     const {genres} = useSelector(state => state.genrieReducer);
-
     const {movieGenre} = useSelector(state => state.movieReducer)
+    const {themes} = useSelector(state => state.themeReducer);
 
     const [query, setQuery] = useSearchParams({with_genres: ''});
 
@@ -51,13 +51,13 @@ function SearchByGenres() {
     }
 
     return (
-        <div className={css.wrap}>
+        <div className={css.wrap} id={themes.genries}>
             <div>
                 {genres.map(genrie => <CButton onClick={() => setQueryGenrie(genrie.id)} className={css.CButton}
                                                value={genrie.id} color="light" key={genrie.id}>{genrie.name}</CButton>)}
             </div>
 
-            <div className={css.cards}>
+            <div className={css.cards} id={themes.allCardsGenrie}>
                 {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}
             </div>
 

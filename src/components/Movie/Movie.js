@@ -10,7 +10,7 @@ function Movie({movie}) {
     return (
         <div className={css.card}>
             <NavLink to={`/movies/${movie.id}`}>
-                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}></img>
+                <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} ></img>
             </NavLink>
 
             <h4 className={css.title}>{movie.title}</h4>

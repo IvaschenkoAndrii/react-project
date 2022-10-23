@@ -7,6 +7,7 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {Movie} from "../Movie/Movie";
 import {movieActions} from "../../redux";
 import css from './Movies.module.css';
+import {MovieDetailed} from "../MovieDetailed/MovieDetailed";
 
 
 
@@ -37,6 +38,8 @@ function Movies() {
         setQuery(value => ({page: value.get('page') - 1}))
         window.scrollTo(0, 0);
     }
+
+    console.log(movies);
 
     return (
         <div>

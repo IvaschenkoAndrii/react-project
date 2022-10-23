@@ -50,7 +50,7 @@ function Movies() {
 
 
     return (
-        <div className={css.wrapMovies}>
+        <div className={css.wrapMovies} id={themes.main}>
             <SearchResults/>
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}

@@ -54,18 +54,17 @@ function SearchResults() {
                 <button>Search</button>
             </form>
 
-            <hr/>
 
             <div className={css.cards}>
                 {searched.results?.map(movie => <SearchResultMoviesList movie={movie} id={movie.id}/>)}
             </div>
 
 
-            <div className={css.buttons}>
-                <CButton disabled={searched?.page === 1} onClick={prevPage} color="">Back </CButton>
-                <CButton onClick={backToMain} color="">Main Page</CButton>
-                <CButton onClick={nextPage} color=""> Next</CButton>
-            </div>
+            {/*<div className={css.buttons}>*/}
+            {/*    <CButton disabled={searched?.page === 1} onClick={prevPage} color="">Back </CButton>*/}
+            {/*    <CButton onClick={backToMain} color="">Main Page</CButton>*/}
+            {/*    <CButton onClick={nextPage} color=""> Next</CButton>*/}
+            {/*</div>*/}
 
 
         </div>

@@ -9,11 +9,15 @@
 .account{
     font-size: 25px;
     font-style: italic;
-    color: cornflowerblue;
+    color: black;
     margin-right: 10px;
 }
 
 .buttons button{
     color: black;
     font-weight: inherit;
+}
+
+.switchTheme{
+    padding-top: 15px;
 }

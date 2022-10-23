@@ -4,9 +4,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 
-import {accountActions} from "../redux";
+import {accountActions} from "../../redux";
 import css from './Header.module.css';
-import {SwitchTheme} from "../components";
+import {SwitchTheme} from "../index";
 
 
 function Header() {
@@ -23,6 +23,10 @@ function Header() {
         dispatch(accountActions.getAccountDetails());
     }, [])
 
+    function backToMain() {
+        navigate('/movies');
+        window.location.reload();
+    }
 
 
     return (
@@ -30,10 +34,12 @@ function Header() {
             <div className={css.buttons}>
                 <CButton onClick={() => navigate('/search_genrie')} color="">Search by genrie</CButton>
 
-                <CButton onClick={() => navigate('/search_results')} color="">Search movies</CButton>
+                <CButton onClick={backToMain} color="">Main Page</CButton>
             </div>
 
-            <SwitchTheme/>
+            <div className={css.switchTheme}>
+                <SwitchTheme/>
+            </div>
 
             <div className={css.account}>
                 {account.username}

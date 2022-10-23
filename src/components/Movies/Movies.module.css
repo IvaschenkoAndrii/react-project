@@ -14,11 +14,13 @@
     background: whitesmoke;
 }
 
-.search-form{
+.searchform{
     background: whitesmoke;
+    display: flex;
 }
 
 
 .wrap-movies form{
+    display: flex;
     background: whitesmoke;
 }

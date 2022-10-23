@@ -1,26 +1,25 @@
-.wrapmovie{
-    display: flex;
+.wrapcard {
     background: whitesmoke;
 }
 
-.image{
+.movie {
+    display: flex;
+}
+
+.image {
     margin: 20px;
 }
 
-.movie-details{
-
+.movie h3 {
+    padding-top: 30px;
 }
 
-.search-form{
-    background: whitesmoke;
-}
-
-.button{
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.button button{
+.button button {
     margin: 10px;
 }

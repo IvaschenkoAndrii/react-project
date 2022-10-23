@@ -27,8 +27,8 @@ function MovieDetailed() {
 
 
     return (
-        <div>
-            <div className={css.wrapmovie}>
+        <div className={css.wrapcard}>
+            <div className={css.movie}>
 
                 <div className={css.image}>
                     <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`} ></img>

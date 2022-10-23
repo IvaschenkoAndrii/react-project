@@ -5,17 +5,14 @@ import {CButton} from '@coreui/react';
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {Movie} from "../Movie/Movie";
-import {movieActions, searchActions} from "../../redux";
+import {movieActions} from "../../redux";
 import css from './Movies.module.css';
-import {SearchResults} from "../SearchResults/SearchResults";
 
 
 
 function Movies() {
 
     let {movies, page} = useSelector(state => state.movieReducer);
-
-    const {searched} = useSelector(state => state.searchReducer);
 
     const dispatch = useDispatch();
 
@@ -24,17 +21,6 @@ function Movies() {
     useEffect(() => {
         dispatch(movieActions.getAllByPages({page: query.get('page')}))
     }, [query]);
-
-    useEffect(() => {
-
-        if (!query.get('query')) {
-            dispatch(movieActions.getAllByPages({page: query.get('page')}))
-        } else {
-            dispatch(searchActions.getSearchedMovies({query: query.get('query'), page: query.get('page')}))
-        }
-
-
-    }, [query, page]);
 
 
     const nextPage = () => {
@@ -52,12 +38,8 @@ function Movies() {
         window.scrollTo(0, 0);
     }
 
-
-
     return (
         <div>
-
-            <SearchResults/>
 
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}

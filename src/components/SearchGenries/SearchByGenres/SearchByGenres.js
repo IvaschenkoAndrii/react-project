@@ -29,7 +29,7 @@ function SearchByGenres() {
 
 
     function setQueryGenrie(id) {
-        setQuery(value => ({with_genres: id, page: 1}))
+        setQuery({with_genres: id, page: 1})
     }
 
 
@@ -51,19 +51,16 @@ function SearchByGenres() {
     }
 
     return (
-        <div>
+        <div className={css.wrap}>
             <div>
                 {genres.map(genrie => <CButton onClick={() => setQueryGenrie(genrie.id)} className={css.CButton}
                                                value={genrie.id} color="light" key={genrie.id}>{genrie.name}</CButton>)}
             </div>
 
-            <hr/>
-
             <div className={css.cards}>
                 {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}
             </div>
 
-            <hr/>
 
             <div className={css.buttons}>
                 <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="">Back </CButton>

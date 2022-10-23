@@ -68,7 +68,6 @@ function Movies() {
 
     return (
         <div>
-
             <div className={css.searchform} id={themes.searchForm}>
                 <form onSubmit={handleSubmit(setSearch)}>
                     <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>

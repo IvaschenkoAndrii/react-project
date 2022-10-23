@@ -8,14 +8,16 @@ import {Movie} from "../Movie/Movie";
 import {movieActions} from "../../redux";
 import css from './Movies.module.css';
 import {SearchResults} from "../SearchResults/SearchResults";
+import {useForm} from "react-hook-form";
 
 
 function Movies() {
 
-    let {movies, page, totalPages} = useSelector(state => state.movieReducer);
-
+    const {movies, page, totalPages} = useSelector(state => state.movieReducer);
+    const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
+    const {handleSubmit, register, reset} = useForm();
 
     const dispatch = useDispatch();
 
@@ -51,14 +53,28 @@ function Movies() {
     };
 
 
+    function setSearch(data) {
+        setQuery({query: data.searchString, page: 1})
+        reset();
+    }
+
+
     return (
         <div className={css.wrapMovies} id={themes.movies}>
 
-            <SearchResults/>
+            <form onSubmit={handleSubmit(setSearch)}>
+                <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
+                <button>Search</button>
+            </form>
 
+            {searched?
+            <div className={css.cards}>
+                {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
+            </div>
+            :
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
-            </div>
+            </div>}
 
             <div className={css.buttons}>
                 <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>

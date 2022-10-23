@@ -67,7 +67,7 @@ function Movies() {
 
 
     return (
-        <div className={css.wrapMovies} id={themes.movies}>
+        <div>
 
             <div className={css.searchform}>
                 <form onSubmit={handleSubmit(setSearch)}>
@@ -81,11 +81,11 @@ function Movies() {
                     {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
                 </div>
                 :
-                <div className={css.cards}>
+                <div className={css.cards} >
                     {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
                 </div>}
 
-            <div className={css.buttons}>
+            <div className={css.buttons} id={themes.movies}>
                 <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>
                 <CButton onClick={backToMain} color="">Main Page</CButton>
                 <CButton disabled={page === totalPages} onClick={nextPage} color=""> Next</CButton>

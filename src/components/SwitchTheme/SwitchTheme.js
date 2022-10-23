@@ -10,27 +10,16 @@ function SwitchTheme() {
         header: 'header_light',
         movies: 'movies_light',
         searchResults: 'searchResults_light',
-        main: 'main_light',
-        card: 'card_light',
-        body: 'body_light',
-        details: 'details_light',
-        form: 'form_light',
-        genres: 'genres_light'
     };
 
     const dark = {
         header: 'header_dark',
         movies: 'movies_dark',
         searchResults: 'searchResults_dark',
-        main: 'main_dark',
-        card: 'card_dark',
-        body: 'body_dark',
-        details: 'details_dark',
-        form: 'form_dark',
-        genres: 'genres_dark'
     };
 
     const {themes} = useSelector(state => state.themeReducer);
+
     const dispatch = useDispatch();
 
 

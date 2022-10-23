@@ -1,21 +1,36 @@
 body {
-  background-color: whitesmoke;
+    background-color: whitesmoke;
+    height: 100%;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-#movies_dark{
-  background-color: black;
+#movies_dark {
+    background-color: #505458;
 }
 
-
-#header_dark{
-  background-color: rgb(15, 8, 12);
+#header_dark {
+    background-color: #505458;
 }
 
 #body_dark {
-  background-color: rgb(15, 8, 12);
+    background-color: #505458;
 }
 
+#searchForm_dark {
+    background-color: #505458;
+}
+
+#card_dark {
+    background-color: #505458;
+}
+#cardDetail_dark {
+    background-color: #505458;
+}
+
+
+#card_dark>h4{
+    color: whitesmoke;
+}

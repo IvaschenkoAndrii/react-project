@@ -2,13 +2,14 @@ import {NavLink} from "react-router-dom";
 
 import css from './movie.module.css'
 import {Rating} from "@mui/material";
+import {useSelector} from "react-redux";
 
 function Movie({movie}) {
 
-
+    const {themes} = useSelector(state => state.themeReducer);
 
     return (
-        <div className={css.card}>
+        <div className={css.card} id={themes.card}>
             <NavLink to={`/movies/${movie.id}`}>
                 {movie.poster_path?
                     <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title}></img>:

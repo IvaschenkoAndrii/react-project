@@ -69,7 +69,7 @@ function Movies() {
     return (
         <div>
 
-            <div className={css.searchform}>
+            <div className={css.searchform} id={themes.searchForm}>
                 <form onSubmit={handleSubmit(setSearch)}>
                     <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
                     <button>Search</button>
@@ -85,7 +85,7 @@ function Movies() {
                     {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
                 </div>}
 
-            <div className={css.buttons} id={themes.movies}>
+            <div className={css.buttons} id={themes.buttons}>
                 <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>
                 <CButton onClick={backToMain} color="">Main Page</CButton>
                 <CButton disabled={page === totalPages} onClick={nextPage} color=""> Next</CButton>

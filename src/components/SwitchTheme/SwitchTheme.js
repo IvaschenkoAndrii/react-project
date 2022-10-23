@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 
 import {themeActions} from "../../redux";
-import {faCoffee, faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
+import {faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function SwitchTheme() {
@@ -9,13 +9,19 @@ function SwitchTheme() {
     const light = {
         header: 'header_light',
         movies: 'movies_light',
-        searchResults: 'searchResults_light',
+        searchForm: 'searchForm_light',
+        buttons: 'buttons_light',
+        card: 'card_light',
+        cardDetail:'cardDetail_light'
     };
 
     const dark = {
         header: 'header_dark',
         movies: 'movies_dark',
-        searchResults: 'searchResults_dark',
+        searchForm: 'searchForm_dark',
+        buttons: 'buttons_dark',
+        card: 'card_dark',
+        cardDetail:'cardDetail_dark'
     };
 
     const {themes} = useSelector(state => state.themeReducer);

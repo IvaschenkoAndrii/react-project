@@ -4,7 +4,10 @@ const initialState = {
     themes: {
         header: 'header_light',
         movies: 'movies_light',
-        searchResults: 'searchResults_light',
+        searchForm: 'searchForm_light',
+        buttons: 'buttons_light',
+        card: 'card_light',
+        cardDetail:'cardDetail_light'
     }
 };
 

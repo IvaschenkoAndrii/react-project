@@ -18,6 +18,7 @@ function MovieDetailed() {
     const dispatch = useDispatch();
 
     const {movie} = useSelector(state => state.movieReducer)
+    const {themes} = useSelector(state => state.themeReducer);
 
     const navigate = useNavigate();
 
@@ -27,7 +28,7 @@ function MovieDetailed() {
 
 
     return (
-        <div className={css.wrapcard}>
+        <div className={css.wrapcard} id={themes.cardDetail}>
             <div className={css.movie}>
 
                 <div className={css.image}>

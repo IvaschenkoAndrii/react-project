@@ -1,4 +1,4 @@
-.body {
+body {
   background-color: whitesmoke;
 }
 
@@ -6,8 +6,8 @@
   box-sizing: border-box;
 }
 
-#card_dark {
-  background-color: #222;
+#movies_dark {
+  background-color: #312d2d;
   box-shadow: 1px 4px 12px 2px black;
 }
 

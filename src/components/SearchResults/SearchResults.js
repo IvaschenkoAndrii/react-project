@@ -12,6 +12,8 @@ function SearchResults() {
 
     const {searched} = useSelector(state => state.searchReducer);
 
+    const {themes} = useSelector(state => state.themeReducer);
+
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -24,31 +26,30 @@ function SearchResults() {
         dispatch(searchActions.getSearchedMovies({query: query1.get('query'), page: query1.get('page')}))
     }, [query1])
 
-    console.log(searched);
 
     function setQueryGenrie(data) {
-        setQuery(value => ({query: data.searchString, page: 1}))
+        setQuery({query: data.searchString, page: 1})
         reset();
     }
 
 
-    const nextPage = () => {
-        setQuery(value => ({query: value.get('query'), page: +value.get('page') + 1}));
-        window.scrollTo(0, 0);
-    }
-
-
-    function prevPage() {
-        setQuery(value => ({query: value.get('query'), page: value.get('page') - 1}));
-        window.scrollTo(0, 0);
-    }
-
-    function backToMain() {
-        navigate('/movies')
-    }
+    // const nextPage = () => {
+    //     setQuery(value => ({query: value.get('query'), page: +value.get('page') + 1}));
+    //     window.scrollTo(0, 0);
+    // }
+    //
+    //
+    // function prevPage() {
+    //     setQuery(value => ({query: value.get('query'), page: value.get('page') - 1}));
+    //     window.scrollTo(0, 0);
+    // }
+    //
+    // function backToMain() {
+    //     navigate('/movies')
+    // }
 
     return (
-        <div>
+        <div id={themes.searchResults}>
             <form onSubmit={handleSubmit(setQueryGenrie)}>
                 <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
                 <button>Search</button>

@@ -24,7 +24,6 @@ function Header() {
     }, [])
 
 
-    console.log(account);
 
     return (
         <div className={css.wrap} id={themes.header}>

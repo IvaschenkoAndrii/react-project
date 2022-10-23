@@ -14,6 +14,9 @@ function Movies() {
 
     let {movies, page} = useSelector(state => state.movieReducer);
 
+    const {themes} = useSelector(state => state.themeReducer);
+
+
     const dispatch = useDispatch();
 
     const [query, setQuery] = useSearchParams({page: '1'});
@@ -50,7 +53,7 @@ function Movies() {
 
 
     return (
-        <div className={css.wrapMovies} id={themes.main}>
+        <div className={css.wrapMovies} id={themes.movies}>
             <SearchResults/>
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}

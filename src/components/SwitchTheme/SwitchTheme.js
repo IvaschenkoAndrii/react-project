@@ -8,7 +8,8 @@ function SwitchTheme() {
 
     const light_themes = {
         header: 'header_light',
-        navbar: 'navbar_light',
+        movies: 'movies_light',
+        searchResults: 'searchResults_light',
         main: 'main_light',
         card: 'card_light',
         body: 'body_light',
@@ -19,7 +20,8 @@ function SwitchTheme() {
 
     const dark_themes = {
         header: 'header_dark',
-        navbar: 'navbar_dark',
+        movies: 'movies_dark',
+        searchResults: 'searchResults_dark',
         main: 'main_dark',
         card: 'card_dark',
         body: 'body_dark',

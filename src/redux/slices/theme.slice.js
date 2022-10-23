@@ -2,8 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     themes: {
-        header: 'header_light',
-        navbar: 'navbar_light',
+        movies: 'movies_light',
+        searchResults: 'searchResults_light',
         main: 'main_light',
         card: 'card_light',
         body: 'body_light',

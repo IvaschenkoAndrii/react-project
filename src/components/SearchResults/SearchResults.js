@@ -2,10 +2,8 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useForm} from "react-hook-form";
 import {useNavigate, useSearchParams} from "react-router-dom";
-import {CButton} from "@coreui/react";
 
 import {searchActions} from "../../redux";
-import {SearchResultMoviesList} from "../SearchResultMoviesList/SearchResultMoviesList";
 import css from "./SearchResults.module.css"
 import {Movie} from "../Movie/Movie";
 
@@ -28,7 +26,7 @@ function SearchResults() {
     }, [query1])
 
 
-    function setQueryGenrie(data) {
+    function setSearch(data) {
         setQuery({query: data.searchString, page: 1})
         reset();
     }
@@ -51,7 +49,7 @@ function SearchResults() {
 
     return (
         <div id={themes.searchResults}>
-            <form onSubmit={handleSubmit(setQueryGenrie)}>
+            <form onSubmit={handleSubmit(setSearch)}>
                 <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
                 <button>Search</button>
             </form>

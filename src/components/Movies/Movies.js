@@ -12,7 +12,7 @@ import {SearchResults} from "../SearchResults/SearchResults";
 
 function Movies() {
 
-    let {movies, page} = useSelector(state => state.movieReducer);
+    let {movies, page, totalPages} = useSelector(state => state.movieReducer);
 
     const {themes} = useSelector(state => state.themeReducer);
 
@@ -35,7 +35,7 @@ function Movies() {
     const prevPage = () => {
         if (query.get('query')) {
             setQuery(value => ({query: query.get('query'), page: value.get('page') - 1}));
-                } else {
+        } else {
             setQuery(value => ({page: value.get('page') - 1}));
         }
         window.scrollTo(0, 0);
@@ -51,10 +51,11 @@ function Movies() {
     };
 
 
-
     return (
         <div className={css.wrapMovies} id={themes.movies}>
+
             <SearchResults/>
+
             <div className={css.cards}>
                 {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
             </div>
@@ -62,7 +63,7 @@ function Movies() {
             <div className={css.buttons}>
                 <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>
                 <CButton onClick={backToMain} color="">Main Page</CButton>
-                <CButton disabled={page === 500} onClick={nextPage} color=""> Next</CButton>
+                <CButton disabled={page === totalPages} onClick={nextPage} color=""> Next</CButton>
             </div>
 
         </div>

@@ -2,15 +2,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 70px;
     background: whitesmoke;
 }
 
 .account{
     font-size: 25px;
     font-style: italic;
-    color: black;
     margin-right: 10px;
+    cursor: pointer;
+}
+.account a{
+    text-decoration: none;
+    color: black;
 }
 
 .buttons button{

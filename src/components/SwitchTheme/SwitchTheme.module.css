@@ -1,0 +1,7 @@
+.switch button:hover {
+    opacity: 0.8;
+}
+
+.switch button:active {
+    opacity: 0.6;
+}

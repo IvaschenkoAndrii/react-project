@@ -7,6 +7,7 @@ import {useEffect} from "react";
 import {accountActions} from "../../redux";
 import css from './Header.module.css';
 import {SwitchTheme} from "../index";
+import {Link} from "@mui/material";
 
 
 function Header() {
@@ -42,7 +43,8 @@ function Header() {
             </div>
 
             <div className={css.account}>
-                {account.username}
+                <Link to={'/.movies'}>{account.username}</Link>
+
             </div>
         </div>
     );

@@ -85,9 +85,9 @@ function Movies() {
                 </div>}
 
             <div className={css.buttons} id={themes.buttons}>
-                <CButton disabled={page === 1} onClick={prevPage} color="">Back </CButton>
-                <CButton onClick={backToMain} color="">Main Page</CButton>
-                <CButton disabled={page === totalPages} onClick={nextPage} color=""> Next</CButton>
+                <CButton disabled={page === 1} onClick={prevPage} color="secondary">Back </CButton>
+                <CButton onClick={backToMain} color="secondary">Main Page</CButton>
+                <CButton disabled={page === totalPages} onClick={nextPage} color="secondary"> Next</CButton>
             </div>
 
         </div>

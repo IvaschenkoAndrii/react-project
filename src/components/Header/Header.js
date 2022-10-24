@@ -29,7 +29,6 @@ function Header() {
         window.location.reload();
     }
 
-
     return (
         <div className={css.wrap} id={themes.header}>
             <div className={css.buttons}>
@@ -43,6 +42,7 @@ function Header() {
             </div>
 
             <div className={css.account}>
+                <img src={'https://image.tmdb.org/t/p/w200'+account?.avatar?.tmdb?.avatar_path}></img>
                 <Link to={'/.movies'}>{account.username}</Link>
 
             </div>

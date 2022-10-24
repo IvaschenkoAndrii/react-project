@@ -17,6 +17,12 @@
     justify-content: center;
 }
 
+.buttons button{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
 .wrap {
     background: whitesmoke;
 }

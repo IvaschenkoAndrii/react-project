@@ -7,7 +7,8 @@ const initialState = {
     movie: null,
     movieGenre: [],
     page: null,
-    totalPages: null
+    totalPages: null,
+    loading:null
 }
 
 const getAllByPages = createAsyncThunk(
@@ -54,9 +55,13 @@ const movieSlice = createSlice({
     extraReducers: builder =>
         builder
             .addCase(getAllByPages.fulfilled, (state, action) => {
-                state.movies = action.payload.results
-                state.totalPages = action.payload.total_pages
-                state.page = action.payload.page
+                state.movies = action.payload.results;
+                state.totalPages = action.payload.total_pages;
+                state.page = action.payload.page;
+                state.loading = false;
+            })
+            .addCase(getAllByPages.pending, (state) => {
+                state.loading = true;
             })
             .addCase(getMovie.fulfilled, (state, action) => {
                 state.movie = action.payload;

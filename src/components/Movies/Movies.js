@@ -12,7 +12,7 @@ import css from './Movies.module.css';
 
 function Movies() {
 
-    const {movies, page, totalPages} = useSelector(state => state.movieReducer);
+    const {movies, page, totalPages, loading} = useSelector(state => state.movieReducer);
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
@@ -67,6 +67,10 @@ function Movies() {
 
 
     return (
+        loading?
+            <div className={css.loading}>
+                <img src={'https://media.tenor.com/64UaxgnTfx0AAAAC/memes-loading.gif'} alt={'loading'}></img>
+            </div>:
         <div>
             <div className={css.searchform} id={themes.searchForm}>
                 <form onSubmit={handleSubmit(setSearch)}>
@@ -80,7 +84,7 @@ function Movies() {
                     {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
                 </div>
                 :
-                <div className={css.cards} >
+                <div className={css.cards}>
                     {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
                 </div>}
 

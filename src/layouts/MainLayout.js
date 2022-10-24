@@ -1,7 +1,9 @@
 import {useSelector} from "react-redux";
 import {Outlet} from "react-router-dom";
 
-import {Header} from "../pages";
+import {Header} from "../components";
+
+
 
 function MainLayout() {
 

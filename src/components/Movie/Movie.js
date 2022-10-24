@@ -1,8 +1,8 @@
 import {NavLink} from "react-router-dom";
-
-import css from './movie.module.css'
 import {Rating} from "@mui/material";
 import {useSelector} from "react-redux";
+
+import css from './Movie.module.css';
 
 function Movie({movie}) {
 

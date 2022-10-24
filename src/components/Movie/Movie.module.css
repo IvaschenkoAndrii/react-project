@@ -34,3 +34,11 @@
 .stars{
     margin-left: 10px;
 }
+
+@media screen and (max-width: 740px) {
+
+    .card{
+        width: 100%;
+    }
+
+    }

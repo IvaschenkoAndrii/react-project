@@ -33,8 +33,13 @@ body {
 
 #card_dark {
     background-color: #505458;
-
 }
+
+#card_dark a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
 #cardDetail_dark {
     background-color: #505458;
     color: whitesmoke;

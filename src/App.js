@@ -2,8 +2,8 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 
 import {MainLayout} from "./layouts";
-import {MovieDetailedPage, MoviesPage, SearchByGenriePage, SearchResultsPage} from "./pages";
-import {NotFoundPage} from "./pages/NotFoundPage";
+import {MovieDetailedPage, MoviesPage, SearchByGenriePage} from "./pages";
+import {NotFoundPage} from "./pages";
 
 
 function App() {

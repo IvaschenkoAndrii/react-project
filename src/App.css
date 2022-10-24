@@ -60,3 +60,10 @@ body {
     background-color: #505458;
 }
 
+#switchTheme_dark div{
+    color: whitesmoke;
+}
+
+#switchTheme_dark button{
+    background-color: #505458;
+}

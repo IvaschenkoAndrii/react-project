@@ -4,8 +4,8 @@ import {CButton} from "@coreui/react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 
 import {genrieActions, movieActions} from "../../../redux";
-import css from './SerchByGenres.module.css'
 import {GenrieSearchResults} from "../GenrieSearchResults/GenrieSearchResults";
+import css from './SerchByGenres.module.css'
 
 function SearchByGenres() {
 

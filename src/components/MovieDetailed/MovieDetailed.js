@@ -3,9 +3,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {CButton} from '@coreui/react';
 import {Rating} from "@mui/material";
-
-
 import '@coreui/coreui/dist/css/coreui.min.css'
+
 import {movieActions} from "../../redux";
 import {GenriesOnMovieDetailed} from "../GenriesOnMovieDetailed/GenriesOnMovieDetailed";
 import css from "./MovieDetailed.module.css"
@@ -32,7 +31,7 @@ function MovieDetailed() {
             <div className={css.movie}>
 
                 <div className={css.image}>
-                    <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`} ></img>
+                    <img src={`https://image.tmdb.org/t/p/w300${movie?.poster_path}`} alt={movie?.title}></img>
                 </div>
 
                 <div className={css.movieDetails}>

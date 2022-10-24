@@ -1,4 +1,4 @@
-.wrap{
+.wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,28 +6,64 @@
     background: whitesmoke;
 }
 
-.account{
+.account {
     font-size: 25px;
     font-style: italic;
     margin-right: 10px;
     cursor: pointer;
 }
 
-.account a{
+.account a {
     text-decoration: none;
     color: black;
 }
 
-.account img{
+.account img {
     height: 40px;
     width: 40px;
 }
 
-.buttons button{
+.buttons button {
     color: black;
     font-weight: inherit;
 }
 
-.switchTheme{
+.switchTheme {
     padding-top: 15px;
 }
+
+@media screen and (max-width: 740px) {
+    .wrap {
+        height: 150px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        margin-left: 10px;
+    }
+
+    .buttons button {
+        height: 70px;
+        width: 100px;
+    }
+
+    .account {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-size: 15px;
+        margin-right: 40px;
+    }
+
+    .account img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .switchTheme {
+        padding-top: 15px;
+        margin-right: 20px;
+    }
+}
+

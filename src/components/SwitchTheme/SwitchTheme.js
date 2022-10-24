@@ -1,10 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
-
-import {themeActions} from "../../redux";
 import {faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useEffect} from "react";
 
+import {themeActions} from "../../redux";
+import css from "./SwitchTheme.module.css"
 
 
 function SwitchTheme() {
@@ -22,7 +22,8 @@ function SwitchTheme() {
         cardDetail: 'cardDetail_light',
         genries: 'genries_light',
         genriesCard: 'genriesCards_light',
-        allCardsGenrie: 'allCardsGenrie_light'
+        allCardsGenrie: 'allCardsGenrie_light',
+        switchTheme:'switchTheme'
     };
 
     const dark = {
@@ -34,23 +35,16 @@ function SwitchTheme() {
         cardDetail: 'cardDetail_dark',
         genries: 'genries_dark',
         genriesCard: 'genriesCards_dark',
-        allCardsGenrie: 'allCardsGenrie_dark'
+        allCardsGenrie: 'allCardsGenrie_dark',
+        switchTheme:'switchTheme_dark'
     };
-
-
-    // function switchTheme() {
-    //     themes.header === 'header_light' ?
-    //         dispatch(themeActions.setTheme({...dark})) :
-    //         dispatch(themeActions.setTheme({...light}));
-    // }
 
 
     const key = localStorage.getItem('theme')
 
-    useEffect(()=>{
+    useEffect(() => {
         darkLightMode();
-        },[key])
-
+    }, [key])
 
 
     function switchLocalStorage() {
@@ -68,19 +62,18 @@ function SwitchTheme() {
     }
 
 
+    return (
+        <div className={css.switch} id={themes.switchTheme}>
 
+            <button onClick={switchLocalStorage}>
+                {themes.header === 'header_light' ?
+                    <FontAwesomeIcon icon={faMoon}/> :
+                    <FontAwesomeIcon icon={faSun}/>}
+            </button>
 
-    return (<div>
+            {themes.header === 'header_light' ? <div>Dark</div> : <div>Ligth</div>}
 
-        <button onClick={switchLocalStorage}>
-            {themes.header === 'header_light' ?
-                <FontAwesomeIcon icon={faMoon}/> :
-                <FontAwesomeIcon icon={faSun}/>}
-        </button>
-
-        {themes.header === 'header_light' ? <div>Dark</div> : <div>Ligth</div>}
-
-    </div>)
+        </div>)
 }
 
 export {SwitchTheme}

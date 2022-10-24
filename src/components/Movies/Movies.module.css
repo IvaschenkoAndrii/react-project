@@ -43,6 +43,19 @@
 
 @media screen and (max-width: 1115px) {
     .searchform input{
-        width: 500px;
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .searchform input{
+        width: 200px;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

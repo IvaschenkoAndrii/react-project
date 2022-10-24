@@ -15,6 +15,14 @@ body {
     background-color: #505458;
 }
 
+#header_dark button{
+    color: whitesmoke;
+}
+
+#header_dark a{
+    color: whitesmoke;
+}
+
 #body_dark {
     background-color: #505458;
 }
@@ -29,6 +37,7 @@ body {
 }
 #cardDetail_dark {
     background-color: #505458;
+    color: whitesmoke;
 }
 
 #card_dark>h4{

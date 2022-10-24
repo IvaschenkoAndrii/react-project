@@ -1,5 +1,7 @@
 .wrapcard {
     background: whitesmoke;
+    height: 700px;
+    overflow: hidden;
 }
 
 .movie {
@@ -37,4 +39,17 @@
 
 .release{
     font-weight: normal;
+}
+
+@media screen and (max-width: 740px) {
+    .movie {
+        flex-direction: column;
+        margin-left: 10px;
+    }
+
+    .wrapcard {
+        background: whitesmoke;
+        height: 1000px;
+        overflow: hidden;
+    }
 }

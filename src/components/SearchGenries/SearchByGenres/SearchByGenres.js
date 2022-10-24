@@ -63,10 +63,10 @@ function SearchByGenres() {
 
 
             <div className={css.buttons}>
-                <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="">Back </CButton>
-                <CButton onClick={backToMain} color="">Main Page</CButton>
+                <CButton disabled={movieGenre.page === 1} onClick={prevPage} color="secondary">Back </CButton>
+                <CButton onClick={backToMain} color="secondary">Main Page</CButton>
                 <CButton disabled={movieGenre.page === movieGenre.totalPages} onClick={nextPage}
-                         color=""> Next</CButton>
+                         color="secondary"> Next</CButton>
             </div>
         </div>
 

@@ -34,3 +34,10 @@
 .searchform button:hover{
     opacity: 0.5;
 }
+
+
+@media screen and (max-width: 1115px) {
+    .searchform input{
+        width: 500px;
+    }
+}

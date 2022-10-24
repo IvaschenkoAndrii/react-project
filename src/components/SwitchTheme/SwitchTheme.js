@@ -12,7 +12,10 @@ function SwitchTheme() {
         searchForm: 'searchForm_light',
         buttons: 'buttons_light',
         card: 'card_light',
-        cardDetail:'cardDetail_light'
+        cardDetail:'cardDetail_light',
+        genries:'genries_light',
+        genriesCard:'genriesCards_light',
+        allCardsGenrie:'allCardsGenrie_light'
     };
 
     const dark = {
@@ -21,7 +24,10 @@ function SwitchTheme() {
         searchForm: 'searchForm_dark',
         buttons: 'buttons_dark',
         card: 'card_dark',
-        cardDetail:'cardDetail_dark'
+        cardDetail:'cardDetail_dark',
+        genries:'genries_dark',
+        genriesCard:'genriesCards_dark',
+        allCardsGenrie:'allCardsGenrie_dark'
     };
 
     const {themes} = useSelector(state => state.themeReducer);

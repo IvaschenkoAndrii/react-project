@@ -68,6 +68,10 @@ const movieSlice = createSlice({
             })
             .addCase(getByGenrie.fulfilled, (state, action) => {
                 state.movieGenre = action.payload;
+                state.loading = false;
+            })
+            .addCase(getByGenrie.pending, (state) => {
+                state.loading = true;
             })
 });
 

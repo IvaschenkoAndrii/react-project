@@ -22,7 +22,12 @@
     margin-right: 10px;
 }
 
-
 .wrap {
     background: whitesmoke;
+}
+
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

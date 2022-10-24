@@ -10,7 +10,7 @@ import css from './SerchByGenres.module.css'
 function SearchByGenres() {
 
     const {genres} = useSelector(state => state.genrieReducer);
-    const {movieGenre} = useSelector(state => state.movieReducer)
+    const {movieGenre,loading} = useSelector(state => state.movieReducer)
     const {themes} = useSelector(state => state.themeReducer);
 
     const [query, setQuery] = useSearchParams({with_genres: ''});
@@ -51,6 +51,10 @@ function SearchByGenres() {
     }
 
     return (
+        loading?
+            <div className={css.loading}>
+                <img src={'https://media.tenor.com/64UaxgnTfx0AAAAC/memes-loading.gif'} alt={'loading'}></img>
+            </div>:
         <div className={css.wrap} id={themes.genries}>
             <div>
                 {genres.map(genrie => <CButton onClick={() => setQueryGenrie(genrie.id)} className={css.CButton}

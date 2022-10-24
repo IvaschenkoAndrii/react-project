@@ -3,8 +3,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {themeActions} from "../../redux";
 import {faMoon, faSun} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {useEffect} from "react";
+
+
 
 function SwitchTheme() {
+
+    const {themes} = useSelector(state => state.themeReducer);
+
+    const dispatch = useDispatch();
 
     const light = {
         header: 'header_light',
@@ -12,10 +19,10 @@ function SwitchTheme() {
         searchForm: 'searchForm_light',
         buttons: 'buttons_light',
         card: 'card_light',
-        cardDetail:'cardDetail_light',
-        genries:'genries_light',
-        genriesCard:'genriesCards_light',
-        allCardsGenrie:'allCardsGenrie_light'
+        cardDetail: 'cardDetail_light',
+        genries: 'genries_light',
+        genriesCard: 'genriesCards_light',
+        allCardsGenrie: 'allCardsGenrie_light'
     };
 
     const dark = {
@@ -24,29 +31,51 @@ function SwitchTheme() {
         searchForm: 'searchForm_dark',
         buttons: 'buttons_dark',
         card: 'card_dark',
-        cardDetail:'cardDetail_dark',
-        genries:'genries_dark',
-        genriesCard:'genriesCards_dark',
-        allCardsGenrie:'allCardsGenrie_dark'
+        cardDetail: 'cardDetail_dark',
+        genries: 'genries_dark',
+        genriesCard: 'genriesCards_dark',
+        allCardsGenrie: 'allCardsGenrie_dark'
     };
 
-    const {themes} = useSelector(state => state.themeReducer);
 
-    const dispatch = useDispatch();
+    // function switchTheme() {
+    //     themes.header === 'header_light' ?
+    //         dispatch(themeActions.setTheme({...dark})) :
+    //         dispatch(themeActions.setTheme({...light}));
+    // }
 
 
-    function switchTheme() {
-        themes.header === 'header_light' ?
-            dispatch(themeActions.setTheme({...dark})) :
-            dispatch(themeActions.setTheme({...light}));
+    const key = localStorage.getItem('theme')
+
+    useEffect(()=>{
+        darkLightMode();
+        },[key])
+
+
+
+    function switchLocalStorage() {
+        localStorage.getItem('theme') === 'dark' ?
+            localStorage.removeItem('theme') :
+            localStorage.setItem('theme', 'dark')
+        darkLightMode();
     }
+
+
+    function darkLightMode() {
+        localStorage.getItem('theme') === 'dark' ?
+            dispatch(themeActions.setTheme({...dark})) :
+            dispatch(themeActions.setTheme({...light}))
+    }
+
+
+
 
     return (<div>
 
-        <button onClick={switchTheme}>
+        <button onClick={switchLocalStorage}>
             {themes.header === 'header_light' ?
-                <FontAwesomeIcon icon={faMoon} /> :
-                <FontAwesomeIcon icon={faSun} />}
+                <FontAwesomeIcon icon={faMoon}/> :
+                <FontAwesomeIcon icon={faSun}/>}
         </button>
 
         {themes.header === 'header_light' ? <div>Dark</div> : <div>Ligth</div>}

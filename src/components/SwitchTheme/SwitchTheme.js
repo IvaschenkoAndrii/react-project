@@ -23,7 +23,8 @@ function SwitchTheme() {
         genries: 'genries_light',
         genriesCard: 'genriesCards_light',
         allCardsGenrie: 'allCardsGenrie_light',
-        switchTheme:'switchTheme'
+        switchTheme:'switchTheme_light',
+        cards:'cards_light'
     };
 
     const dark = {
@@ -36,7 +37,8 @@ function SwitchTheme() {
         genries: 'genries_dark',
         genriesCard: 'genriesCards_dark',
         allCardsGenrie: 'allCardsGenrie_dark',
-        switchTheme:'switchTheme_dark'
+        switchTheme:'switchTheme_dark',
+        cards:'cards_dark'
     };
 
 

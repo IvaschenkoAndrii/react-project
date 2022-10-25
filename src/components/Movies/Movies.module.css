@@ -3,6 +3,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    background: whitesmoke;
 }
 
 .cards a{

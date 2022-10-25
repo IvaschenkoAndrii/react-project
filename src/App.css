@@ -49,6 +49,10 @@ body {
     color: whitesmoke;
 }
 
+#cards_dark{
+    background-color: #505458;
+}
+
 #genries_dark{
     background-color: #505458;
 }

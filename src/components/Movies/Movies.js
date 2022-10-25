@@ -80,11 +80,11 @@ function Movies() {
             </div>
 
             {searched.results ?
-                <div className={css.cards}>
+                <div className={css.cards} id={themes.cards}>
                     {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
                 </div>
                 :
-                <div className={css.cards}>
+                <div className={css.cards} id={themes.cards}>
                     {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
                 </div>}
 

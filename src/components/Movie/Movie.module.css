@@ -1,5 +1,5 @@
 .card{
-    height: 450px;
+    height: 500px;
     width: 20%;
     background: whitesmoke;
     box-shadow: 10px 10px 15px 2px silver;
@@ -18,7 +18,7 @@
 
 
 .card img{
-    height: 300px;
+    /*height: 300px;*/
     width: 90%;
     margin-top: 10px;
     margin-left: 10px;

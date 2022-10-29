@@ -5,6 +5,7 @@
     /*padding-left: 27px;*/
     box-shadow: 10px 10px 15px 2px silver;
     margin: 30px;
+    border: #505458 solid 1px;
 }
 
 .card:hover {

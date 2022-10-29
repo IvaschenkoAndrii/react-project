@@ -45,6 +45,7 @@ body {
 
 #card_dark {
     background-color: #505458;
+    border: none;
 }
 
 #card_dark a {

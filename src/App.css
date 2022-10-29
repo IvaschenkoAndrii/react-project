@@ -31,6 +31,18 @@ body {
     background-color: #505458;
 }
 
+/*#searchForm_dark select{*/
+/*    background-color: rgba(128, 128, 128, 0.14);*/
+/*}*/
+
+/*#searchForm_dark input{*/
+/*    background-color: #505458;*/
+/*}*/
+
+/*#searchForm_dark button{*/
+/*    background-color: #505458;*/
+/*}*/
+
 #card_dark {
     background-color: #505458;
 }

@@ -42,11 +42,13 @@
 }
 
 .searchform input {
+    background: whitesmoke;
     width: 400px;
     height: 25px;
 }
 
 .searchform select {
+    background: whitesmoke;
     margin-left: 35px;
     width: 150px;
     height: 25px;

@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     width: 100%;
     background: whitesmoke;
+    padding-left: 20px;
 }
 
 .cards a {

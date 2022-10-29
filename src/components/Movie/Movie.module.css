@@ -3,7 +3,8 @@
     width: 20%;
     background: whitesmoke;
     padding-left: 27px;
-    box-shadow: 1px 4px 12px 2px silver;
+    box-shadow: 10px 10px 15px 2px silver;
+    margin: 30px;
 }
 
 .card:hover {
@@ -18,8 +19,8 @@
 
 .card img{
     height: 300px;
-    width: 200px;
-    margin: 10px;
+    width: 90%;
+    margin-top: 10px;
 }
 
 .title {

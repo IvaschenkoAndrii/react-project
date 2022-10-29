@@ -18,7 +18,7 @@ function Movies() {
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm({defaultValues:{id:12}});
+    const {handleSubmit, register, reset} = useForm({defaultValues: {id: 28}});
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -74,8 +74,8 @@ function Movies() {
     }
 
 
-    function SetQueryGenrie({id}) {
-        setQuery({with_genres: id, page: 1})
+    function SetQueryGenrie(data) {
+        setQuery({with_genres: data.id, page: 1})
     }
 
 
@@ -91,7 +91,7 @@ function Movies() {
                     <form onChange={handleSubmit(SetQueryGenrie)}>
                         <select {...register('id')}>
                             {genres?.map(genrie => (
-                                <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
+                                <option key={genrie.id} value={genrie.id} >{genrie.name}</option>
                             ))}
                         </select>
                     </form>

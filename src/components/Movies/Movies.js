@@ -8,7 +8,6 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {Movie} from "../Movie/Movie";
 import {genrieActions, movieActions, searchActions} from "../../redux";
 import css from './Movies.module.css';
-import {GenrieSearchResults} from "../SearchGenries/GenrieSearchResults/GenrieSearchResults";
 
 
 function Movies() {
@@ -18,7 +17,7 @@ function Movies() {
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm();
+    const {handleSubmit, register, reset} = useForm({defaultValues:{id:28}});
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -82,10 +81,6 @@ function Movies() {
     }
 
 
-    console.log(movies);
-    console.log(searched);
-    console.log(movieGenre);
-
     return (
         loading ?
             <div className={css.loading}>
@@ -93,42 +88,29 @@ function Movies() {
             </div> :
             <div>
                 <div className={css.searchform} id={themes.searchForm}>
-                    <form onSubmit={handleSubmit(setSearch)}>
-                        <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
-                        <button>Search</button>
+
+                    <form onChange={handleSubmit(SetQueryGenrie)}>
+                        <select {...register('id')}>
+                            {genres?.map(genrie => (
+                                <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
+                            ))}
+                        </select>
                     </form>
-                </div>
 
+                        <form onSubmit={handleSubmit(setSearch)}>
+                            <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
+                            <button>Search</button>
+                        </form>
+                 </div>
 
-                <form onChange={handleSubmit(SetQueryGenrie)}>
-                    <select {...register('id')}>
-                        {genres?.map(genrie => (
-                            <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
-                        ))}
-                    </select>
-                </form>
-
-
-
-                {searched.results?
+                {searched.results ?
                     <div className={css.cards} id={themes.cards}>
                         {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
                     </div>
                     :
                     <div className={css.cards} id={themes.allCardsGenrie}>
-                        {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}
+                        {movieGenre.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
                     </div>}
-
-
-
-                {/*{movieGenre.results &&*/}
-                {/*    <div className={css.cards} id={themes.allCardsGenrie}>*/}
-                {/*        {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}*/}
-                {/*    </div>}*/}
-
-
-
-
 
 
                 <div className={css.buttons} id={themes.buttons}>

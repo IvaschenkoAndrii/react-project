@@ -26,6 +26,7 @@
 .buttons button {
     color: black;
     font-weight: inherit;
+    margin-left: 35px;
 }
 
 .switchTheme {

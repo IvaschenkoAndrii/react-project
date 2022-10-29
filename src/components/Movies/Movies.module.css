@@ -35,7 +35,7 @@
 .searchform{
     background: whitesmoke;
     display: flex;
-    justify-content:center;
+    justify-content:space-evenly;
     padding-right: 30px;
     padding-top: 15px;
     padding-bottom: 10px;

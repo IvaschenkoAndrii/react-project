@@ -2,7 +2,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import './App.css';
 
 import {MainLayout} from "./layouts";
-import {MovieDetailedPage, MoviesPage, SearchByGenriePage} from "./pages";
+import {MovieDetailedPage, MoviesPage} from "./pages";
 import {NotFoundPage} from "./pages";
 
 
@@ -17,7 +17,6 @@ function App() {
                 <Route path={'/movies/:id'} element={<MovieDetailedPage/>}/>
             </Route>
 
-            <Route path={'/search_genrie'} element={<SearchByGenriePage/>}/>
             <Route path={'*'} element={<NotFoundPage/>}/>
         </Routes>
 

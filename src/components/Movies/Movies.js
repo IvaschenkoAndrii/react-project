@@ -13,7 +13,7 @@ import css from './Movies.module.css';
 
 function Movies() {
 
-    const {movies, movieGenre, page,totalPages, loading} = useSelector(state => state.movieReducer);
+    const {movies, movieGenre, page, totalPages, loading} = useSelector(state => state.movieReducer);
     const {genres} = useSelector(state => state.genrieReducer);
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
@@ -24,8 +24,6 @@ function Movies() {
     const navigate = useNavigate();
 
     const [query, setQuery] = useSearchParams({page: '1'});
-
-
 
 
     useEffect(() => {
@@ -51,16 +49,28 @@ function Movies() {
 
     const prevPage = () => {
         if (query.get('query')) {
-            setQuery(value => ({query: query.get('query'), page: value.get('page') - 1}));
+            setQuery(value => ({
+                query: query.get('query'), page: value.get('page') - 1
+            }));
+        } else if (query.get('with_genres')) {
+            setQuery(value => ({
+                with_genres: query.get('with_genres'), page: +value.get('page') - 1
+            }));
         } else {
-            setQuery(value => ({page: value.get('page') - 1}));
+            setQuery(value => ({page: +value.get('page') - 1}));
         }
         window.scrollTo(0, 0);
     };
 
     const nextPage = () => {
         if (query.get('query')) {
-            setQuery(value => ({query: query.get('query'), page: +value.get('page') + 1}));
+            setQuery(value => ({
+                query: query.get('query'), page: +value.get('page') + 1
+            }));
+        } else if (query.get('with_genres')) {
+            setQuery(value => ({
+                with_genres: query.get('with_genres'), page: +value.get('page') + 1
+            }));
         } else {
             setQuery(value => ({page: +value.get('page') + 1}));
         }
@@ -79,7 +89,6 @@ function Movies() {
     }
 
 
-
     return (
         loading ?
             <div className={css.loading}>
@@ -91,7 +100,7 @@ function Movies() {
                     <form onChange={handleSubmit(SetQueryGenrie)}>
                         <select {...register('id')}>
                             {genres?.map(genrie => (
-                                <option key={genrie.id} value={genrie.id} >{genrie.name}</option>
+                                <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
                             ))}
                         </select>
                     </form>

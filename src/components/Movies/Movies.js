@@ -18,7 +18,7 @@ function Movies() {
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm({defaultValues: {id: 28}});
+    const {handleSubmit, register, reset} = useForm({defaultValues:{id:12}});
 
     const dispatch = useDispatch();
     const navigate = useNavigate();

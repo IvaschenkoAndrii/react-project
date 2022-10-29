@@ -51,11 +51,7 @@ const getMovie = createAsyncThunk(
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {
-        setPage: (state, action) => {
-            state.page = action.payload.page;
-        }
-    },
+    reducers: {},
     extraReducers: builder =>
         builder
             .addCase(getMovie.fulfilled, (state, action) => {
@@ -75,7 +71,7 @@ const movieSlice = createSlice({
 const {reducer: movieReducer,actions:{setPage}} = movieSlice
 
 const movieActions = {
-    getMovie, getByGenrie, setPage,
+    getMovie, getByGenrie
     }
 
 export {

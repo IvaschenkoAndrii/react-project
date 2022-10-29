@@ -1,9 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate, useSearchParams} from "react-router-dom";
 import {CButton} from '@coreui/react';
 import {useForm} from "react-hook-form";
 import '@coreui/coreui/dist/css/coreui.min.css'
+import {Pagination} from '@mui/material'
 
 import {Movie} from "../Movie/Movie";
 import {genrieActions, movieActions, searchActions} from "../../redux";
@@ -12,17 +13,19 @@ import css from './Movies.module.css';
 
 function Movies() {
 
-    const {movies, movieGenre, page, totalPages, loading} = useSelector(state => state.movieReducer);
+    const {movies, movieGenre, page,totalPages, loading} = useSelector(state => state.movieReducer);
     const {genres} = useSelector(state => state.genrieReducer);
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm({defaultValues:{id:28}});
+    const {handleSubmit, register, reset} = useForm({defaultValues: {id: 28}});
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [query, setQuery] = useSearchParams({page: '1'});
+
+
 
 
     useEffect(() => {
@@ -76,6 +79,7 @@ function Movies() {
     }
 
 
+
     return (
         loading ?
             <div className={css.loading}>
@@ -92,11 +96,11 @@ function Movies() {
                         </select>
                     </form>
 
-                        <form onSubmit={handleSubmit(setSearch)}>
-                            <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
-                            <button>Search</button>
-                        </form>
-                 </div>
+                    <form onSubmit={handleSubmit(setSearch)}>
+                        <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
+                        <button>Search</button>
+                    </form>
+                </div>
 
                 {searched.results ?
                     <div className={css.cards} id={themes.cards}>
@@ -108,11 +112,17 @@ function Movies() {
                     </div>}
 
 
-                <div className={css.buttons} id={themes.buttons}>
-                    <CButton disabled={page === 1} onClick={prevPage} color="secondary">Back </CButton>
-                    <CButton onClick={backToMain} color="secondary">Main Page</CButton>
-                    <CButton disabled={page === totalPages} onClick={nextPage} color="secondary"> Next</CButton>
-                </div>
+                {/*<div className={css.buttons} id={themes.buttons}>*/}
+                {/*    <CButton disabled={page === 1} onClick={prevPage} color="secondary">Back </CButton>*/}
+                {/*    <CButton onClick={backToMain} color="secondary">Main Page</CButton>*/}
+                {/*    <CButton disabled={page === totalPages} onClick={nextPage} color="secondary"> Next</CButton>*/}
+                {/*</div>*/}
+
+                <Pagination
+                    count={500}
+                    page={query.get('page')}
+                    onChange={()=>dispatch(movieActions.setPage(query.get('page')))}
+                />
 
             </div>
     );

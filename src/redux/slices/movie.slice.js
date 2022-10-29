@@ -51,18 +51,13 @@ const getMovie = createAsyncThunk(
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
-    reducers: {},
+    reducers: {
+        setPage: (state, action) => {
+            state.page = action.payload.page;
+        }
+    },
     extraReducers: builder =>
         builder
-            // .addCase(getAllByPages.fulfilled, (state, action) => {
-            //     state.movies = action.payload.results;
-            //     state.totalPages = action.payload.total_pages;
-            //     state.page = action.payload.page;
-            //     state.loading = false;
-            // })
-            // .addCase(getAllByPages.pending, (state) => {
-            //     state.loading = true;
-            // })
             .addCase(getMovie.fulfilled, (state, action) => {
                 state.movie = action.payload;
             })
@@ -77,12 +72,11 @@ const movieSlice = createSlice({
             })
 });
 
-const {reducer: movieReducer} = movieSlice
+const {reducer: movieReducer,actions:{setPage}} = movieSlice
 
 const movieActions = {
-    // getAllByPages,
-    getMovie, getByGenrie
-}
+    getMovie, getByGenrie, setPage,
+    }
 
 export {
     movieActions, movieReducer

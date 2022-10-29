@@ -8,6 +8,7 @@ import '@coreui/coreui/dist/css/coreui.min.css'
 import {movieActions} from "../../redux";
 import {GenriesOnMovieDetailed} from "../GenriesOnMovieDetailed/GenriesOnMovieDetailed";
 import css from "./MovieDetailed.module.css"
+import {YouTube} from "@mui/icons-material";
 
 
 function MovieDetailed() {
@@ -25,6 +26,13 @@ function MovieDetailed() {
         dispatch(movieActions.getMovie({id}));
     }, [id])
 
+
+    const options = {
+        playerVars: {
+            autoplay: 1
+        },
+        width: '100%'
+    };
 
     return (
         <div className={css.wrapcard} id={themes.cardDetail}>
@@ -51,6 +59,8 @@ function MovieDetailed() {
                 <CButton onClick={() => navigate(-1)} color="secondary">Back</CButton>
                 <CButton onClick={() => navigate('/movies/')} color="secondary">Main Page</CButton>
             </div>
+
+            <YouTube videoId={"ZS_8btMjx2U"} opts={options}/>
         </div>
 
     );

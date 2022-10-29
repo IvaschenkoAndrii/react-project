@@ -6,13 +6,15 @@ import {useForm} from "react-hook-form";
 import '@coreui/coreui/dist/css/coreui.min.css'
 
 import {Movie} from "../Movie/Movie";
-import {movieActions, searchActions} from "../../redux";
+import {genrieActions, movieActions, searchActions} from "../../redux";
 import css from './Movies.module.css';
+import {GenrieSearchResults} from "../SearchGenries/GenrieSearchResults/GenrieSearchResults";
 
 
 function Movies() {
 
-    const {movies, page, totalPages, loading} = useSelector(state => state.movieReducer);
+    const {movies, movieGenre, page, totalPages, loading} = useSelector(state => state.movieReducer);
+    const {genres} = useSelector(state => state.genrieReducer);
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
@@ -26,13 +28,22 @@ function Movies() {
 
     useEffect(() => {
         if (!query.get('query')) {
-            dispatch(movieActions.getAllByPages({
-                page: query.get('page'),
-            }));
+            dispatch(movieActions.getByGenrie(
+                {with_genres: query.get('with_genres'), page: query.get('page')}))
+
         } else {
             dispatch(searchActions.getSearchedMovies({page: query.get('page'), query: query.get('query')}))
         }
     }, [query, page]);
+
+    useEffect(() => {
+        dispatch(genrieActions.getAllGenries())
+    }, [])
+
+
+    // useEffect(() => {
+    //     dispatch(movieActions.getByGenrie({with_genres: query.get('with_genres'), page: query.get('page')}))
+    // }, [query])
 
 
     function backToMain() {
@@ -60,42 +71,74 @@ function Movies() {
     };
 
 
-    function setSearch(data) {
-        setQuery({query: data.searchString, page: 1})
+    function setSearch({searchString}) {
+        setQuery({query: searchString, page: 1})
         reset();
     }
 
 
+    function SetQueryGenrie({id}) {
+        setQuery({with_genres: id, page: 1})
+    }
+
+
+    console.log(movies);
+    console.log(searched);
+    console.log(movieGenre);
+
     return (
-        loading?
+        loading ?
             <div className={css.loading}>
                 <img src={'https://media.tenor.com/64UaxgnTfx0AAAAC/memes-loading.gif'} alt={'loading'}></img>
-            </div>:
-        <div>
-            <div className={css.searchform} id={themes.searchForm}>
-                <form onSubmit={handleSubmit(setSearch)}>
-                    <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
-                    <button>Search</button>
-                </form>
-            </div>
-
-            {searched.results ?
-                <div className={css.cards} id={themes.cards}>
-                    {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
+            </div> :
+            <div>
+                <div className={css.searchform} id={themes.searchForm}>
+                    <form onSubmit={handleSubmit(setSearch)}>
+                        <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
+                        <button>Search</button>
+                    </form>
                 </div>
-                :
-                <div className={css.cards} id={themes.cards}>
-                    {movies.map(movie => <Movie movie={movie} key={movie.id}/>)}
-                </div>}
 
-            <div className={css.buttons} id={themes.buttons}>
-                <CButton disabled={page === 1} onClick={prevPage} color="secondary">Back </CButton>
-                <CButton onClick={backToMain} color="secondary">Main Page</CButton>
-                <CButton disabled={page === totalPages} onClick={nextPage} color="secondary"> Next</CButton>
+
+                <form onChange={handleSubmit(SetQueryGenrie)}>
+                    <select {...register('id')}>
+                        {genres?.map(genrie => (
+                            <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
+                        ))}
+                    </select>
+                </form>
+
+
+
+                {searched.results?
+                    <div className={css.cards} id={themes.cards}>
+                        {searched.results?.map(movie => <Movie movie={movie} id={movie.id}/>)}
+                    </div>
+                    :
+                    <div className={css.cards} id={themes.allCardsGenrie}>
+                        {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}
+                    </div>}
+
+
+
+                {/*{movieGenre.results &&*/}
+                {/*    <div className={css.cards} id={themes.allCardsGenrie}>*/}
+                {/*        {movieGenre.results?.map(movie => <GenrieSearchResults movie={movie} key={movie.id}/>)}*/}
+                {/*    </div>}*/}
+
+
+
+
+
+
+                <div className={css.buttons} id={themes.buttons}>
+                    <CButton disabled={page === 1} onClick={prevPage} color="secondary">Back </CButton>
+                    <CButton onClick={backToMain} color="secondary">Main Page</CButton>
+                    <CButton disabled={page === totalPages} onClick={nextPage} color="secondary"> Next</CButton>
+                </div>
+
             </div>
-
-        </div>
-    )
+    );
 }
 
 export {Movies}

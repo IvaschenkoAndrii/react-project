@@ -40,11 +40,6 @@ function Movies() {
     }, [])
 
 
-    // useEffect(() => {
-    //     dispatch(movieActions.getByGenrie({with_genres: query.get('with_genres'), page: query.get('page')}))
-    // }, [query])
-
-
     function backToMain() {
         navigate('/movies')
         window.location.reload();

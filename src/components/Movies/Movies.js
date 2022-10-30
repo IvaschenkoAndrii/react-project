@@ -18,7 +18,7 @@ function Movies() {
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm();
+    const {handleSubmit, register, reset} = useForm({defaultValues: {id: 28}});
 
 
     const dispatch = useDispatch();
@@ -109,17 +109,13 @@ function Movies() {
                             </select>
                         </form>
                     </div>
+
                     <div>
                         <form onSubmit={handleSubmit(setSearch)}>
                             <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
                             <button>Search</button>
                         </form>
                     </div>
-
-
-
-
-
 
                 </div>
 

@@ -20,7 +20,6 @@ function Movies() {
 
     const {handleSubmit, register, reset} = useForm();
 
-    console.log(useForm());
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -82,7 +81,8 @@ function Movies() {
 
     function setSearch({searchString}) {
         setQuery({query: searchString, page: 1})
-        reset();
+            reset({searchString: null});
+
     }
 
 
@@ -99,18 +99,28 @@ function Movies() {
             <div>
 
                 <div className={css.searchform} id={themes.searchForm}>
-                    <form onChange={handleSubmit(SetQueryGenrie)}>
-                        <select {...register('id')}>
-                            {genres?.map(genrie => (
-                                <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
-                            ))}
-                        </select>
-                    </form>
 
-                    <form onSubmit={handleSubmit(setSearch)}>
-                        <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
-                        <button>Search</button>
-                    </form>
+                    <div>
+                        <form onChange={handleSubmit(SetQueryGenrie)}>
+                            <select {...register('id')}>
+                                {genres?.map(genrie => (
+                                    <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
+                                ))}
+                            </select>
+                        </form>
+                    </div>
+                    <div>
+                        <form onSubmit={handleSubmit(setSearch)}>
+                            <input type={"text"} placeholder={"Search movie"}{...register('searchString')}></input>
+                            <button>Search</button>
+                        </form>
+                    </div>
+
+
+
+
+
+
                 </div>
 
 

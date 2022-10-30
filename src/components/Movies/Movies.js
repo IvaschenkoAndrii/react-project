@@ -80,7 +80,7 @@ function Movies() {
 
     function setSearch({searchString}) {
         setQuery({query: searchString, page: 1})
-        reset();
+        console.log(searchString);
     }
 
 

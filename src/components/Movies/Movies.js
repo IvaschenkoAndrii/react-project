@@ -18,7 +18,9 @@ function Movies() {
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm({defaultValues: {id: 28}});
+    const {handleSubmit, register, reset} = useForm();
+
+    console.log(useForm());
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -95,8 +97,8 @@ function Movies() {
                 <img src={'https://media.tenor.com/64UaxgnTfx0AAAAC/memes-loading.gif'} alt={'loading'}></img>
             </div> :
             <div>
-                <div className={css.searchform} id={themes.searchForm}>
 
+                <div className={css.searchform} id={themes.searchForm}>
                     <form onChange={handleSubmit(SetQueryGenrie)}>
                         <select {...register('id')}>
                             {genres?.map(genrie => (
@@ -110,6 +112,7 @@ function Movies() {
                         <button>Search</button>
                     </form>
                 </div>
+
 
                 {searched.results ?
                     <div className={css.cards} id={themes.cards}>

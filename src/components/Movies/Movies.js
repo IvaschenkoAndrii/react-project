@@ -18,7 +18,7 @@ function Movies() {
     const {searched} = useSelector(state => state.searchReducer);
     const {themes} = useSelector(state => state.themeReducer);
 
-    const {handleSubmit, register, reset} = useForm({defaultValues: {id: 28}});
+    const {handleSubmit, register, reset} = useForm();
 
 
     const dispatch = useDispatch();
@@ -100,9 +100,10 @@ function Movies() {
 
                 <div className={css.searchform} id={themes.searchForm}>
 
-                    <div>
+                    <div className={css.searchGenrie}>
                         <form onChange={handleSubmit(SetQueryGenrie)}>
                             <select {...register('id')}>
+                                <option>Select genrie</option>
                                 {genres?.map(genrie => (
                                     <option key={genrie.id} value={genrie.id}>{genrie.name}</option>
                                 ))}

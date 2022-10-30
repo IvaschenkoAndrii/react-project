@@ -47,11 +47,18 @@
     background: whitesmoke;
     width: 400px;
     height: 25px;
+    border-radius: 5px;
 }
+
+.searchform button {
+    border-radius: 5px;
+    padding-top: 2px;
+}
+
 
 .searchform select {
     background: whitesmoke;
-    margin-left: 35px;
+    margin-left: 5px;
     width: 150px;
     height: 25px;
 }
@@ -70,6 +77,24 @@
     opacity: 0.5;
 }
 
+.searchGenrie{
+    display: flex;
+    margin-left: 35px;
+}
+
+.searchGenrie option {
+    border: 0;
+    padding-right: 15px;
+    height: 31px;
+    width: 220px;
+}
+
+.searchGenrie select {
+    border-radius: 5px;
+    padding-right: 15px;
+    height: 31px;
+    width: 220px;
+}
 
 @media screen and (max-width: 1115px) {
     .searchform input {

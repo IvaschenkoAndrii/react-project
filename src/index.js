@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 
 import {setupStore} from "./redux";
-import {BrowserRouter, Routes} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
 const store = setupStore();
 
